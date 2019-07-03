@@ -47,7 +47,7 @@ Library interproc_lib
   # Pack           : true
   Path           : deps/interproc
   BuildTools     : ocamlbuild
-  Modules        : Interproc
+  Modules        : Interproc_main
   FindlibName    : interproc_lib
   CompiledObject : native
   ByteOpt        : -annot -g
