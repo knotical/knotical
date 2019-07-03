@@ -1,0 +1,74 @@
+OASISFormat    : 0.4
+OCamlVersion   : > 4.01.0
+FindlibVersion : >= 1.3.2
+BuildTools     : ocamlbuild
+# AlphaFeatures  : ocamlbuild_more_args
+# XOCamlbuildPluginTags: package(cppo_ocamlbuild)
+Plugins        : META (0.4), DevFiles (0.4)
+
+Name           : Knotical
+Version        : 1.0
+Synopsis       : An Inference System of Trace Relational Interfaces
+License        : LGPL with OCaml linking exception
+
+Authors        : Knotical
+Description    : An Inference System of Trace Relational Interfaces
+Homepage       : https://github.com/knotical
+
+Executable "knotical"
+  Path           : src
+  MainIs         : knotical.ml
+  BuildTools     : ocamlbuild # camlp4of
+  CompiledObject : native
+  ByteOpt        : -rectypes -custom camlp4lib.cma -w -a+8 -warn-error -a -g
+  NativeOpt      : -rectypes camlp4lib.cmxa -w -a+8 -warn-error -a
+  Install        : false
+  BuildDepends   : threads,
+                   camlp4,
+                   ocamlgraph,
+                   str,
+                   dynlink,
+                   batteries,
+                   core,
+                   safa,
+                   symkat_lib,
+                   interproc_lib
+
+Library kparser
+  Path              : src
+  BuildTools        : ocamlbuild
+  Modules           : Kparser
+  XMETAType         : syntax
+  FindlibContainers : syntax-camlp4
+  FindlibName       : syntax
+  BuildDepends      : camlp4.extend, camlp4.quotations.o
+
+Library interproc_lib
+  # Pack           : true
+  Path           : deps/interproc
+  BuildTools     : ocamlbuild
+  Modules        : Interproc_main
+  FindlibName    : interproc_lib
+  CompiledObject : native
+  ByteOpt        : -annot -g
+  NativeOpt      : -annot -g
+  BuildDepends   : camllib,
+                   fixpoint,
+                   gmp,
+                   apron,
+                   apron.boxMPQ,
+                   apron.octMPQ,
+                   apron.polkaMPQ,
+                   apron.t1pMPQ,
+                   apron.ppl,
+                   apron.polkaGrid
+
+Library symkat_lib
+  Path           : deps/symkat
+  BuildTools     : ocamlbuild
+  Modules        : Symkat
+  FindlibName    : symkat_lib
+  CompiledObject : native
+  ByteOpt        : -rectypes -annot -g
+  NativeOpt      : -rectypes -annot -g
+  BuildDepends   : safa
