@@ -47,16 +47,16 @@
     make install
     ```
     
-1. Download Interproc and Symkat
+<!-- 1. Download Interproc and Symkat -->
 
-    ```
-    mkdir deps
+<!--     ``` -->
+<!--     mkdir deps -->
     
-    svn checkout https://scm.gforge.inria.fr/anonscm/svn/bjeannet/pkg/interproc/ deps/interproc
+<!--     svn checkout https://scm.gforge.inria.fr/anonscm/svn/bjeannet/pkg/interproc/ deps/interproc -->
     
-    wget https://perso.ens-lyon.fr/damien.pous/symbolickat/symkat-1.4.tgz --no-check-certificate
-    tar -xf symkat-1.4.tgz -C symkat --directory deps/
-    ```
+<!--     wget https://perso.ens-lyon.fr/damien.pous/symbolickat/symkat-1.4.tgz --no-check-certificate -->
+<!--     tar -xf symkat-1.4.tgz -C symkat --directory deps/ -->
+<!--     ``` -->
     
 1. Compile Knotical
    

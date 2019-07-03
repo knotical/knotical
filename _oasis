@@ -45,7 +45,7 @@ Library kparser
 
 Library interproc_lib
   # Pack           : true
-  Path           : deps/interproc/trunk
+  Path           : deps/interproc
   BuildTools     : ocamlbuild
   Modules        : Interproc
   FindlibName    : interproc_lib
