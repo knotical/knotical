@@ -51,10 +51,11 @@
 
     ```
     mkdir deps
-    https://scm.gforge.inria.fr/anonscm/svn/bjeannet/pkg/interproc/ deps/interproc
+    
+    svn checkout https://scm.gforge.inria.fr/anonscm/svn/bjeannet/pkg/interproc/ deps/interproc
     
     wget https://perso.ens-lyon.fr/damien.pous/symbolickat/symkat-1.4.tgz
-    tar -xf symkat-1.4.tgz --directory deps/interproc
+    tar -xf symkat-1.4.tgz --directory deps/
     ```
     
 1. Compile Knotical
