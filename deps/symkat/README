@@ -1,0 +1,51 @@
+
+ SymbolicKAT: Symbolic Algorithms for Kleene Algebra with Tests (KAT)
+			  =============
+
+ 			   Damien Pous
+	       CNRS - LIP, ENS Lyon (UMR 5668), France
+
+This library is distributed under the terms of the GNU Lesser General
+Public License version 3. See files LICENSE and COPYING.
+
+Webpage of the project: http://perso.ens-lyon.fr/damien.pous/symbolickat
+
+
+This OCaml library contains several constructions for Kleene algebra
+with tests (KAT), that produce symbolic automata out of KAT
+expressions, which can then be checked for equivalence using the
+symbolic algorithms provided in the SAFA library.
+
+These constructions are described in the following paper,
+in Proc. POPL'15 ; 
+http://doi.acm.org/10.1145/2676726.2677007
+https://hal.archives-ouvertes.fr/hal-01021497v2/document
+
+Dependencies:
+ ocamlfind, safa (all available through opam)
+
+You can compile a standalone program by typing [make].
+Then run [./symkat.native -help] to get a list of options.
+Typically [./symkat.native '(bc+!b!c)(brs+!brt)' 'bcrs+!b!crt'] will
+check whether the two given expressions are equivalent.
+
+Alternatively, you can build an OCaml library by typing [make lib], or
+look at the makefile for other targets.
+
+Here is a succinct description of each module:
+
+kat		   : Kleene algebra with tests expressions
+
+antimirov	   : Antimirov' partial derivatives
+brzozowski	   : Brzozowski's derivatives
+ilieYu		   : Ilie&Yu's construction
+
+hypotheses	   : Hypothesis elimination
+
+parse		   : simple parser for KAT expressions
+
+symkat	 	   : high-level interface of the library,
+		     main entry point for standalone program
+
+tests		   : a few sanity tests
+bench		   : random benchmarks

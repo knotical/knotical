@@ -1,0 +1,12 @@
+# OASIS_START
+# DO NOT EDIT (digest: 7ba33530d05f4de607e28f5ab300ee86)
+version = "1.0"
+description = "An Inference System of Trace Relational Interfaces"
+requires = "safa"
+archive(byte) = "symkat_lib.cma"
+archive(byte, plugin) = "symkat_lib.cma"
+archive(native) = "symkat_lib.cmxa"
+archive(native, plugin) = "symkat_lib.cmxs"
+exists_if = "symkat_lib.cmxa"
+# OASIS_STOP
+

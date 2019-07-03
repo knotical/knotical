@@ -1,0 +1,13 @@
+# OASIS_START
+# DO NOT EDIT (digest: c459b6d4fa8409ae07831da0c1f2c77f)
+version = "1.0"
+description = "An Inference System of Trace Relational Interfaces"
+requires =
+"camllib fixpoint gmp apron apron.boxMPQ apron.octMPQ apron.polkaMPQ apron.t1pMPQ apron.ppl apron.polkaGrid"
+archive(byte) = "interproc_lib.cma"
+archive(byte, plugin) = "interproc_lib.cma"
+archive(native) = "interproc_lib.cmxa"
+archive(native, plugin) = "interproc_lib.cmxs"
+exists_if = "interproc_lib.cmxa"
+# OASIS_STOP
+
