@@ -54,7 +54,7 @@
     
     svn checkout https://scm.gforge.inria.fr/anonscm/svn/bjeannet/pkg/interproc/ deps/interproc
     
-    wget https://perso.ens-lyon.fr/damien.pous/symbolickat/symkat-1.4.tgz
+    wget https://perso.ens-lyon.fr/damien.pous/symbolickat/symkat-1.4.tgz --no-check-certificate
     tar -xf symkat-1.4.tgz --directory deps/
     ```
     
