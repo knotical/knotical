@@ -66,13 +66,13 @@
 
 ### Running a single example
 
-- For instance, the following command line runs the tool Knotical over the motivating example (`bench/01sendrecv.c`) to find trace refinement relations under which the *first* method `C2` strictly refines the *second* method `C1`, given that the methods `send`, `recv`, and `constructReply` aren't removed
+- For instance, the following command line runs the tool Knotical over the motivating example (`bench/01sendrecv.c`) to find trace refinement relations under which the first method `C2` *strictly refines* the second method `C1`, given that the methods `send`, `recv`, and `constructReply` aren't removed
 
     ```
     ./knotical.native -cmpLt C2 C1 -no-rem send,recv,constructReply bench/01sendrecv.c
     ```
     
-- The result contains multiple refinement relations represented in the form of trees. A solution tree is *complete* or *partial* in the sense that whether or not different restrictions in its refinement relations applied to the input methods, when taken together cover all behaviors of the first method (in case of `cmpLt`) or both (in case of `cmp`). For example, the following solution tree is one of the results returned by Knotical for the motivating example. It is a *complete* solution because there are refinement relations corresponding to all cases in the first method `C2`.
+- The result contains multiple refinement relations represented in the form of trees. A solution tree is *complete* (`C`) or *partial* (`P`) in the sense that whether or not different restrictions in its refinement relations applied to the input methods, when taken together cover all behaviors of the first method (in case of `cmpLt`) or both (in case of `cmp`). For example, the following solution tree is one of the results returned by Knotical for the motivating example. It is a *complete* solution because there are refinement relations corresponding to all cases in the first method `C2` (marked by `@1`).
 
     ```
     (C) d_30@2: 
@@ -102,5 +102,7 @@
      |_  !d_30@2
        ...
     ```
+    
+    The first refinement relation shows that when `log` are removed in both methods and the authorization `auth` is always successful then `C2` *refines* `C1`.
 
 ### Running the benchmarks
