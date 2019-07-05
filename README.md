@@ -72,6 +72,35 @@
     ./knotical.native -cmpLt C2 C1 -no-rem send,recv,constructReply bench/01sendrecv.c
     ```
     
-- The result contains multiple refinement relations represented in the form of trees. A solution tree is *complete* or *partial* in the sense that whether or not different restrictions in its refinement relations applied to the input methods, when taken together cover all behaviors of the first method (in case of `cmpLt`) or both (in case of `cmp`).
+- The result contains multiple refinement relations represented in the form of trees. A solution tree is *complete* or *partial* in the sense that whether or not different restrictions in its refinement relations applied to the input methods, when taken together cover all behaviors of the first method (in case of `cmpLt`) or both (in case of `cmp`). For example, the following solution tree is one of the results returned by Knotical for the motivating example. It is a *complete* solution because there are refinement relations corresponding to all cases in the first method `C2`.
+
+    ```
+    (C) d_30@2: 
+     |_  d_30@2
+      (C) b_12@1: 
+       |_  b_12@1
+         |_ (A) {I=1, J=1, K=1, M=1}
+           GenAxiom {I=1} {I: ((L37 C9), () = log(b);)}
+        -> Case d_30 {d: ((L14 C13), c > 0)}
+        -> GenAxiom {J=1} {J: ((L14 C13), () = log(b);)}
+        -> Case b_12 {b: ((L32 C18), auth > 0)}
+        -> GenAxiom {K=1} {K: ((L19 C15), () = log(n);)}
+        -> GenAxiom {M=1} {M: ((L30 C10), auth = check(b);)}
+        -> (a_8.V_16.(c_15.M_57.C_11.S_10 + !c_15.I_33).X_9)*.!a_8 <= (a_22.V_31.J_34.(c_28.C_27.S_26.K_56 + !c_28).X_23)*.!a_22
+       |_  !b_12@1
+        (C) c_28@2: 
+         |_  c_28@2: No solutions
+         |_  !c_28@2
+           |_ (A) {I=1, J=1, K=1}
+           GenAxiom {I=1} {I: ((L37 C9), () = log(b);)}
+        -> Case d_30 {d: ((L14 C13), c > 0)}
+        -> GenAxiom {J=1} {J: ((L14 C13), () = log(b);)}
+        -> Case !b_12 {b: ((L32 C18), auth > 0)}
+        -> Case !c_28 {c: ((L16 C13), b > 0)}
+        -> GenAxiom {K=1} {K: ((L30 C10), auth = check(b);)}
+        -> (a_8.V_16.(c_15.K_61 + !c_15.I_33).X_9)*.!a_8 <= (a_22.V_31.J_34.X_23)*.!a_22
+     |_  !d_30@2
+       ...
+    ```
 
 ### Running the benchmarks
