@@ -1,6 +1,8 @@
-# Knotical
+# Knotical: An Inference System of Trace Refinement Relations
 
-## Using Docker
+## Getting Started Guide
+
+### Using Docker
 
 1. Install Docker. Follow the instructions on https://docs.docker.com/install/.
 
@@ -16,7 +18,7 @@
     docker run -it knotical bash
     ```
     
-## Installation on Ubuntu
+### Installation on Ubuntu from scratch
 
 1. Install Prerequisites
 
