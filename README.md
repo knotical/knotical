@@ -103,6 +103,6 @@
        ...
     ```
     
-    The first refinement relation shows that when `log` are removed in both methods and the authorization `auth` is always successful then `C2` *refines* `C1`.
+    The first refinement relation shows that when `log` are removed in both methods and the authorization `auth` in `C2` is always successful then `C2` *refines* `C1`.
 
 ### Running the benchmarks
