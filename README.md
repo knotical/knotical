@@ -58,6 +58,12 @@
     
 ## Step by Step Instructions
 
+### Knotical's command-line options
+
+- `-cmp` or `cmpLt`: Find the trace refinement relations of the two methods for equality (`cmp`) or refinement (`cmpLt`)
+- `-no-rem`: Specify the list of events/methods that cannot be removed or replaced
+- `-depth`: Specify the depth of proof search
+
 ### Running a single example
 
 ### Running the benchmarks
