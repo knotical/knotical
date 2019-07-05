@@ -66,10 +66,12 @@
 
 ### Running a single example
 
-- The following command line runs the tool Knotical over the motivating example (`bench/01sendrecv.c`) to find trace refinement relations under which `C2` strictly refines `C1`, given that the methods `send`, `recv`, and `constructReply` aren't removed
+- For instance, the following command line runs the tool Knotical over the motivating example (`bench/01sendrecv.c`) to find trace refinement relations under which the *first* method `C2` strictly refines the *second* method `C1`, given that the methods `send`, `recv`, and `constructReply` aren't removed
 
     ```
     ./knotical.native -cmpLt C2 C1 -no-rem send,recv,constructReply bench/01sendrecv.c
     ```
+    
+- The result contains multiple refinement relations represented in the form of trees. A solution tree is *complete* or *partial* in the sense that whether or not different restrictions in its refinement relations applied to the input methods, when taken together cover all behaviors of the first method (in case of `cmpLt`) or both (in case of `cmp`).
 
 ### Running the benchmarks
