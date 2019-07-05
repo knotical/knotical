@@ -66,4 +66,10 @@
 
 ### Running a single example
 
+- The following command line runs the tool Knotical over the motivating example (`bench/01sendrecv.c`) to find trace refinement relations under which `C2` strictly refines `C1`, given that the methods `send`, `recv`, and `constructReply` aren't removed
+
+    ```
+    ./knotical.native -cmpLt C2 C1 -no-rem send,recv,constructReply bench/01sendrecv.c
+    ```
+
 ### Running the benchmarks
