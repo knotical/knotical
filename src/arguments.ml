@@ -8,8 +8,44 @@ let raw_arguments_release =
   [(["-h"; "-help"; "--help"], "Display list of options",
     Arg.Unit (fun () -> print_string !usage_msg))]
 
-let common_raw_arguments_internal =
-  [(["-drc"],
+let raw_arguments_internal =
+  [(["-interproc"],
+    "Source file for the interproc engine",
+    Arg.String (fun s ->
+      interproc_source_file := s));
+   (["-kat"],
+    "Source file for the kat parser",
+    Arg.String (fun s ->
+      kat_source_file := s));
+   (["-symkat"],
+    "Inputs of SymKAT",
+    Arg.Tuple ([
+        Arg.Set_string symkat_x;
+        Arg.Set_string symkat_y ]));
+   (["-cmp"],
+    "Two methods to compare",
+    Arg.Tuple ([
+        Arg.Set_string fst_cmp_method;
+        Arg.String (fun s ->
+            snd_cmp_method := s;
+            compare_mode_enabled := true; )
+      ]));
+   (["-cmpLt"],
+    "Two methods to compare",
+    Arg.Tuple ([
+        Arg.Set_string fst_cmp_method;
+        Arg.String (fun s ->
+            snd_cmp_method := s;
+            compare_mode_enabled := true;
+            refinement_op := RLe; )
+      ]));
+   (["-no-rem"],
+    "List of events that cannot be removed",
+    Arg.String (fun s ->
+        no_removed_events := String.split_on_char ',' s));
+   (["-depth"], "Depth of proof search",
+    Arg.Set_int rec_depth_threshold);
+   (["-drc"],
     "Debug by regular expression and print input, \n\
      output by chronological order",
     Arg.String (fun s ->
@@ -42,63 +78,17 @@ let common_raw_arguments_internal =
       print_prover_option := true;));
    (["--debug-silence"], "Disable printing debugging information",
     Arg.Set debug_silence);
-   (["-h"; "-help"; "--help"], "Display list of options",
-    Arg.Unit (fun () -> ()));
-  ]
-
-(* Knotical's arguments *)
-let knotical_arguments_internal =
-  [(["-interproc"],
-    "Source file for the interproc engine",
-    Arg.String (fun s ->
-      interproc_source_file := s));
-   (["-kat"],
-    "Source file for the kat parser",
-    Arg.String (fun s ->
-      kat_source_file := s));
-   (["-symkat"],
-    "Inputs of SymKAT",
-    Arg.Tuple ([
-        Arg.Set_string symkat_x;
-        Arg.Set_string symkat_y ]));
-   (["-ked"],
-    "KAT Edit Distance",
-    Arg.Tuple ([
-        Arg.Set_string symkat_x;
-        Arg.String (fun s ->
-            ked_enabled := true;
-            symkat_y := s;) ]));
-   (["-cmp"],
-    "Two methods to compare",
-    Arg.Tuple ([
-        Arg.Set_string fst_cmp_method;
-        Arg.String (fun s ->
-            snd_cmp_method := s;
-            compare_mode_enabled := true; )
-      ]));
-   (["-cmpLt"],
-    "Two methods to compare",
-    Arg.Tuple ([
-        Arg.Set_string fst_cmp_method;
-        Arg.String (fun s ->
-            snd_cmp_method := s;
-            compare_mode_enabled := true;
-            refinement_op := RLe; )
-      ]));
-   (["-no-rem"],
-    "List of events that cannot be removed",
-    Arg.String (fun s ->
-        no_removed_events := String.split_on_char ',' s));
-   (["-depth"], "Depth of proof search",
-    Arg.Set_int rec_depth_threshold);
    (["-pi"], "Print program in intermediate language",
     Arg.Set print_prog_iast);
    (["-tex"], "Print results in LaTeX",
     Arg.Set print_tex);
+   (["-h"; "-help"; "--help"], "Display list of options",
+    Arg.Unit (fun () -> ()));
   ]
 
 (* all arguments with pretty printing *)
-let mk_arguments raw_arguments =
+let raw_arguments =
+  let raw_arguments = raw_arguments_internal in
   let arguments = List.fold_left (fun acc (keys, doc, spec) ->
     let options = List.map (fun k ->
       let ndoc = doc in
@@ -106,9 +96,8 @@ let mk_arguments raw_arguments =
     acc @ options) [] raw_arguments in
   arguments
 
-let parse f msg raw_arguments =
-  let arguments = mk_arguments raw_arguments in
-  let arg_str = arguments
+let parse f msg =
+  let arg_str = raw_arguments
                 |> List.map (fun (x, y, z) -> "  " ^ x ^ z)
                 |> String.concat "\n" in
   let usage = msg ^ "\n" ^ arg_str ^ "\n\n" in
@@ -118,7 +107,7 @@ let parse f msg raw_arguments =
          (String.compare x "-help" != 0) &&
          (String.compare x "--help" != 0) then
         acc @ [(x, y, z)]
-      else acc) [] arguments in
+      else acc) [] raw_arguments in
 
     let arguments = arguments @ [
       ("-h", Arg.Unit (fun () -> print_string usage),

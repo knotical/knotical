@@ -10,7 +10,7 @@ module S = Spl_syn
 module SU = Spl_utils
 module H = SU.H
 module HE = SU.HElem
-(* module KW = Symkat_wrapper *)
+module KU = Symkat_utils
 
 type kat =
   | Kcomp of kat * kat

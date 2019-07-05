@@ -13,12 +13,13 @@ module SA = Spl_assume
 
 module H = Hypotheses
 module SK = Symkat
-module SKW = Symkat_wrapper
+module SKU = Symkat_utils
 
-module IK = SKW.ILK
-module KT = SKW.LKTrans
-module L = SKW.LInt
-module M = SKW.KMap (IK)
+module IK = SKU.ILK
+module KT = SKU.LKTrans
+module K = IK.LK
+module L = SKU.LInt
+module M = SKU.KMap (IK)
 
 (* Types *)
 type diff_symb = (Kat.var * (Bdd.key * bool) list)
@@ -47,7 +48,7 @@ type axmap = ((S.point list * S.instruction),
               (S.point list * S.cons)) cmap_
 
 type assumption = {
-  assumpt_info: IK.key SA.assumption;
+  assumpt_info: K.key SA.assumption;
   assumpt_pos: kpos; }
 
 type refinement =
@@ -56,15 +57,15 @@ type refinement =
 
 type refinement_log =
   | GenAxiom of (H.t * axmap list)
-  | CaseAnalysis of (bool * IK.key * axmap list)
+  | CaseAnalysis of (bool * K.key * axmap list)
 
 type result =
   | RLeaf of rleaf
   | RTree of rtree
 
 and rleaf = {
-  rl_fst_kat: IK.expr;
-  rl_snd_kat: IK.expr;
+  rl_fst_kat: K.expr;
+  rl_snd_kat: K.expr;
   rl_cmp_op: refinement_direction;
   rl_symtab: KT.symtab;
   rl_refined_prog: S.program;
@@ -72,10 +73,10 @@ and rleaf = {
   rl_log: refinement_log list; }
 
 and rtree = {
-  rt_fst_kat: IK.expr;
-  rt_snd_kat: IK.expr;
+  rt_fst_kat: K.expr;
+  rt_snd_kat: K.expr;
   rt_symtab: KT.symtab;
-  rt_key: IK.key;
+  rt_key: K.key;
   rt_kpos: kpos;
   rt_is_complete: bool;
   rt_pos_result: result option;
@@ -123,9 +124,9 @@ let pr_diff_symb =
 
 let debug_cex pname ke cex =
   Debug.hprint ("kdiff.search: CEX from " ^ pname ^
-                (* " (" ^ (SKW.pr_expr ke) ^ ")" ^ *)
-                ": " ^ (pr_cex cex) ^ " ")
-    SKW.pr_gstring cex
+                 (* " (" ^ (SKU.pr_expr ke) ^ ")" ^ *)
+                 ": " ^ (pr_cex cex) ^ " ")
+    SKU.pr_gstring cex
 
 let pr_assumption assumpt =
   pr_pair pr_kpos SA.pr_assumption (assumpt.assumpt_pos, assumpt.assumpt_info)
@@ -134,7 +135,7 @@ let pr_assumptions (assumpts: assumption list) =
   pr_list ~obrace:"{" ~cbrace:"}" pr_assumption assumpts
 
 let pr_refinement = function
-  | Axiom hypos -> SKW.pr_hypos hypos
+  | Axiom hypos -> SKU.pr_hypos hypos
   | Assumption assumpt -> pr_assumption assumpt
 
 let pr_refinements = pr_list pr_refinement
@@ -142,16 +143,16 @@ let pr_refinements = pr_list pr_refinement
 let pr_axmap (m: axmap) =
   match m with
   | KMap (k, cons) ->
-    (SKW.pr_key k) ^ ": " ^ (pr_pair (pr_list SU.pr_point) SU.pr_cons cons)
+    (SKU.pr_key k) ^ ": " ^ (pr_pair (pr_list SU.pr_point) SU.pr_cons cons)
   | VMap (v, instr) ->
-    (SKW.pr_var v) ^ ": " ^ (pr_pair (pr_list SU.pr_point) SU.pr_instruction instr)
+    (SKU.pr_var v) ^ ": " ^ (pr_pair (pr_list SU.pr_point) SU.pr_instruction instr)
 
 let pr_axmap_lst = pr_list ~sep:"\n" pr_axmap
 
 let pr_refinement_log l =
   let pr_map = pr_list ~obrace:"{" ~cbrace:"}" ~sep:"; " pr_axmap in
   match l with
-  | GenAxiom (axiom, m) -> "GenAxiom " ^ (SKW.pr_hypos axiom) ^ " " ^ (pr_map m)
+  | GenAxiom (axiom, m) -> "GenAxiom " ^ (SKU.pr_hypos axiom) ^ " " ^ (pr_map m)
   | CaseAnalysis (b, k, m) ->
     "Case " ^ (if b then "" else "!") ^
     (IK.K.string_of k) ^ " " ^ (pr_map m)
@@ -165,31 +166,31 @@ let pr_result r =
   let rec helper ntabs r =
     "\n" ^
     (match r with
-     | RLeaf rl ->
-       (pr_indent ntabs) ^ " |_ (A) " ^ (SKW.pr_hypos rl.rl_axioms)
-       ^ "\n" ^ (pr_refinement_logs rl.rl_log)
-       ^ "\n\t-> " ^ (IK.pr_expr rl.rl_fst_kat)
-       ^ (match rl.rl_cmp_op with | RLe -> " <= " | REq -> " = ")
-       ^ (IK.pr_expr rl.rl_snd_kat)
-     | RTree rt ->
-       let k = rt.rt_key in
-       let pr = rt.rt_pos_result in
-       let nr = rt.rt_neg_result in
-       let cons_str =
-         match KT.spl_cons_of_key k with
-         | None -> ""
-         | Some (_, cons) -> SU.pr_cons cons in
-       (pr_indent ntabs) ^ "(" ^
-       (if rt.rt_is_complete then "C" else "P") ^ ")" ^ " " ^
-       (pr_key rt) ^ ": " ^ cons_str ^ "\n" ^
-       ((pr_indent ntabs) ^ " |_  " ^ (pr_key rt) ^
+    | RLeaf rl ->
+      (pr_indent ntabs) ^ " |_ (A) " ^ (SKU.pr_hypos rl.rl_axioms)
+      ^ "\n" ^ (pr_refinement_logs rl.rl_log)
+      ^ "\n\t-> " ^ (IK.pr_expr rl.rl_fst_kat)
+      ^ (match rl.rl_cmp_op with | RLe -> " <= " | REq -> " = ")
+      ^ (IK.pr_expr rl.rl_snd_kat)
+    | RTree rt ->
+      let k = rt.rt_key in
+      let pr = rt.rt_pos_result in
+      let nr = rt.rt_neg_result in
+      let cons_str =
+        match KT.spl_cons_of_key k with
+        | None -> ""
+        | Some (_, cons) -> SU.pr_cons cons in
+      (pr_indent ntabs) ^ "(" ^
+      (if rt.rt_is_complete then "C" else "P") ^ ")" ^ " " ^
+      (pr_key rt) ^ ": " ^ cons_str ^ "\n" ^
+      ((pr_indent ntabs) ^ " |_  " ^ (pr_key rt) ^
         (match pr with
-         | None -> ": No solutions"
-         | Some r -> (helper (ntabs+1) r)) ^ "\n") ^
-       ((pr_indent ntabs) ^ " |_  " ^ "!" ^ (pr_key rt) ^
+       | None -> ": No solutions"
+       | Some r -> (helper (ntabs+1) r)) ^ "\n") ^
+      ((pr_indent ntabs) ^ " |_  " ^ "!" ^ (pr_key rt) ^
         (match nr with
-         | None -> ": No solutions"
-         | Some r -> (helper (ntabs+1) r))))
+       | None -> ": No solutions"
+       | Some r -> (helper (ntabs+1) r))))
   in
   let num_leaves = count_leaves r in
   let num_axioms = count_axioms r in
@@ -208,8 +209,8 @@ let pr_result_tex r =
   let pr_indent_dir n = "."^(string_of_int n)^" " in
   let mk_label s symtbl k1 k2 =
     "$\\left\\{\\begin{array}{l}" ^ s ^ "\\\\ "
-    ^ "k_1=" ^ (IK.pr_expr_tex k1 (instr_map_of_var symtbl)) ^ "\\\\ "
-    ^ "k_2=" ^ (IK.pr_expr_tex k2 (instr_map_of_var symtbl)) ^ "\\end{array}\\right.$." in
+    ^ "k_1=" ^ (K.pr_expr_tex k1 (instr_map_of_var symtbl)) ^ "\\\\ "
+    ^ "k_2=" ^ (K.pr_expr_tex k2 (instr_map_of_var symtbl)) ^ "\\end{array}\\right.$." in
   let rec helper ntabs r =
     match r with
     | RLeaf rl ->
@@ -217,7 +218,7 @@ let pr_result_tex r =
       let kat1 = rl.rl_fst_kat in
       let kat2 = rl.rl_snd_kat in
       [((pr_indent_dir ntabs) ^ "AComplete.");
-       (pr_indent_dir (ntabs+1)) ^ (mk_label ("Axioms: "^(SKW.pr_hypos_tex axioms))
+       (pr_indent_dir (ntabs+1)) ^ (mk_label ("Axioms: "^(SKU.pr_hypos_tex axioms))
                                       rl.rl_symtab kat1 kat2)]
     | RTree rt ->
       let kat1 = rt.rt_fst_kat in
@@ -228,7 +229,7 @@ let pr_result_tex r =
       let cons_str =
         match KT.spl_cons_of_key ~symtbl:(Some rt.rt_symtab) k with
         | None -> ""
-        | Some (_, cons) -> ", cond: $" ^ (SU.pr_cons cons) ^ "$" in
+        | Some (_, cons) -> ", cond: $"^(SU.pr_cons cons)^"$" in
       [((pr_indent_dir ntabs) ^ "(" ^
         (if rt.rt_is_complete then "Complete" else "Partial") ^ ")" ^ cons_str^".")]
       @ (match pr with
@@ -239,8 +240,7 @@ let pr_result_tex r =
       @ (match nr with
           | None -> []
           | Some r ->
-            [((pr_indent_dir (ntabs+1)) ^
-              (mk_label ("Cond: \\neg " ^ (pr_key k)) rt.rt_symtab kat1 kat2))]
+            [((pr_indent_dir (ntabs+1)) ^ (mk_label ("Cond: \\neg "^(pr_key k)) rt.rt_symtab kat1 kat2))]
             @ (helper (ntabs+2) r))
   in
   ["\\dirtree{%";".1 solution."]
@@ -254,8 +254,8 @@ let pr_result_dot r =
   let pr_key = IK.K.string_of in
   let mklabel s k1 k2 =
     " [shape=box label=\"" ^ s
-    ^ "\\lk1=" ^ (IK.pr_expr k1)
-    ^ "\\lk2=" ^ (IK.pr_expr k2) ^ "\"]" in
+    ^ "\\lk1=" ^ (K.pr_expr k1)
+    ^ "\\lk2=" ^ (K.pr_expr k2) ^ "\"]" in
   let rec helper parent_id r =
     match r with
     | RLeaf rl ->
@@ -264,7 +264,7 @@ let pr_result_dot r =
       let kat1 = rl.rl_fst_kat in
       let kat2 = rl.rl_snd_kat in
       [(parent_id ^ " -> " ^ myid);
-	     (myid ^ (mklabel (SKW.pr_hypos axioms) kat1 kat2))]
+	     (myid ^ (mklabel (SKU.pr_hypos axioms) kat1 kat2))]
     | RTree rt ->
       let kat1 = rt.rt_fst_kat in
       let kat2 = rt.rt_snd_kat in
@@ -279,8 +279,8 @@ let pr_result_dot r =
 	      (prid ^ (mklabel (pr_key k) kat1 kat2));
 	      (nrid ^ (mklabel ("not "^(pr_key k)) kat1 kat2))]
 		    (List.append
-           (match pr with None -> [] | Some r -> helper prid r)
-           (match nr with None -> [] | Some r -> helper prid r))
+         (match pr with None -> [] | Some r -> helper prid r)
+         (match nr with None -> [] | Some r -> helper prid r))
   in
   let rootid = _dot_id_gen() in
   [("subgraph g"^rootid^" {"); (rootid ^ " [style=filled, color=gray, label=\"root\"]")]
@@ -290,8 +290,8 @@ let pr_result_dot r =
 (** Edit Distance for KAT *)
 
 type kelt =
-  | KExpr of IK.expr
-  | KTest of IK.test
+  | KExpr of K.expr
+  | KTest of K.test
 
 type cmap = (IK.V.t, IK.K.t) cmap_
 
@@ -302,22 +302,22 @@ type 'a kaction =
   | Replace of ('a kact_elt * 'a kact_elt)
 
 let pr_kelt = function
-  | KExpr e -> IK.pr_expr e
-  | KTest t -> IK.pr_test t
+  | KExpr e -> K.pr_expr e
+  | KTest t -> K.pr_test t
 
 let pr_csym_ pr_v pr_k c =
   match c with
   | CKey (b, k) -> (if b then "" else "!") ^ (pr_k k)
   | CVar v -> pr_v v
 
-let pr_csym = pr_csym_ SKW.pr_var SKW.pr_key
+let pr_csym = pr_csym_ SKU.pr_var SKU.pr_key
 
 let pr_ksym = pr_csym_ IK.V.string_of IK.K.string_of
 
 let pr_cmap_ pr_v pr_k m =
   match m with
-  | KMap (k1, k2) -> pr_pair SKW.pr_key pr_k (k1, k2)
-  | VMap (v1, v2) -> pr_pair SKW.pr_var pr_v (v1, v2)
+  | KMap (k1, k2) -> pr_pair SKU.pr_key pr_k (k1, k2)
+  | VMap (v1, v2) -> pr_pair SKU.pr_var pr_v (v1, v2)
 
 let pr_cmap = pr_cmap_ IK.V.string_of IK.K.string_of
 
@@ -348,29 +348,19 @@ let eq_refinement (r1: refinement) (r2: refinement) =
   | Assumption a1, Assumption a2 -> eq_assumption a1 a2
   | _ -> false
 
-let map_csym_ (f_v, f_k) s =
-  match s with
+let map_csym_ (f_v, f_k) c =
+  match c with
   | CKey (b, k) -> CKey (b, f_k k)
   | CVar v -> CVar (f_v v)
 
-let eq_csym_ (eq_v, eq_k) s1 s2 =
-  match s1, s2 with
+let eq_csym_ (eq_v, eq_k) c1 c2 =
+  match c1, c2 with
   | CKey (b1, k1), CKey (b2, k2) ->
     b1 == b2 && eq_k k1 k2
   | CVar v1, CVar v2 -> eq_v v1 v2
   | _ -> false
 
-let eq_csym = eq_csym_ (SKW.eq_var, SKW.eq_key)
-
-let eq_cmap_ (eq_v, eq_k) m1 m2 =
-  match m1, m2 with
-  | KMap (k11, k12), KMap (k21, k22) ->
-    Char.equal k11 k21 && eq_k k12 k22
-  | VMap (v11, v12), VMap (v21, v22) ->
-    Char.equal v11 v21 && eq_v v12 v22
-  | _ -> false
-
-let eq_cmap = eq_cmap_ (IK.eq_var, IK.eq_key)
+let eq_csym = eq_csym_ (SKU.eq_var, SKU.eq_key)
 
 let is_cvar = function
   | CVar _ -> true
@@ -386,27 +376,27 @@ let ksym_has_dummy_label (s: ksym) =
   | CKey (_, k) -> IK.K.has_dummy_label k
 
 let rec ksyms_of_expr ?(get_tests=true)
-    (axioms: H.t) (e: IK.expr): ksym list =
+    (axioms: H.t) (e: K.expr): ksym list =
   let f_get = ksyms_of_expr ~get_tests:get_tests axioms in
   match e with
-  | IK.Pls (l, r)
-  | IK.Dot (l, r) -> (f_get l) @ (f_get r)
-  | IK.Str s -> f_get s
-  | IK.Tst t -> if get_tests then ksyms_of_test t else []
+  | K.Pls (l, r)
+  | K.Dot (l, r) -> (f_get l) @ (f_get r)
+  | K.Str s -> f_get s
+  | K.Tst t -> if get_tests then ksyms_of_test t else []
   | Var v ->
-    if SKW.eq_kat_expr axioms
-        (IK.kat_of_expr e) (IK.kat_of_expr (IK.Tst IK.Top))
+    if SKU.eq_kat_expr axioms
+        (K.expr_to_kat e) (K.expr_to_kat (K.Tst K.Top))
     then []
     else [CVar v]
 
-and ksyms_of_test ?(sign=true) (t: IK.test): ksym list =
+and ksyms_of_test ?(sign=true) (t: K.test): ksym list =
   match t with
-  | IK.Dsj (l, r)
-  | IK.Cnj (l, r) ->
+  | K.Dsj (l, r)
+  | K.Cnj (l, r) ->
     (ksyms_of_test ~sign:sign l) @ (ksyms_of_test ~sign:sign r)
-  | IK.Neg e -> (ksyms_of_test ~sign:(not sign) e)
-  | IK.Top | IK.Bot -> []
-  | IK.Prd k -> [CKey (sign, k)]
+  | K.Neg e -> (ksyms_of_test ~sign:(not sign) e)
+  | K.Top | K.Bot -> []
+  | K.Prd k -> [CKey (sign, k)]
 
 let is_disj_kpos = function
   | KDsj _ | KPls _ -> true
@@ -441,15 +431,15 @@ let rec pos_of_kpos kp =
 
 let kelt_of_atom (atom: (Bdd.key * bool) list): kelt list =
   let kat_of_atom ((k, b): (Bdd.key * bool)): kelt =
-    let t = IK.Prd (IK.K.fresh_from_kat k) in
-    KTest (if b then t else IK.Neg t)
+    let t = K.Prd (IK.K.fresh_from_kat k) in
+    KTest (if b then t else K.Neg t)
   in
   List.map kat_of_atom atom
 
 let kelt_of_g_expr
     (gs: (Kat.var * (Bdd.key * bool) list)): kelt list =
   let var, atom = gs in
-  let kvar = KExpr (IK.Var (IK.V.fresh_from_kat var)) in
+  let kvar = KExpr (K.Var (IK.V.fresh_from_kat var)) in
   let katom = kelt_of_atom atom in
   kvar::katom
 
@@ -541,10 +531,10 @@ let rec split_ordered_lst ls =
 
 let rec match_cex
     (axioms: H.t)
-    (e: IK.expr)
+    (e: K.expr)
     (cs: csym list)
   : (bool * cmap list) =
-  let e_syms = BatSet.of_list (IK.syms_of_expr e) in
+  let e_syms = K.expr_kat_syms e in
   let cs = List.filter (fun c ->
       match c with
       | CVar v -> BatSet.mem v e_syms
@@ -554,21 +544,21 @@ let rec match_cex
 
 and expr_is_match
     (axioms: H.t)
-    (e: IK.expr)
+    (e: K.expr)
     (cs: csym list)
   : (bool * cmap list) =
   let matcher = expr_is_match axioms in
   match e with
-  | IK.Pls (l, r) ->
-    if (SKW.eq_kat_expr axioms
-          (IK.kat_of_expr e) (IK.kat_of_expr (IK.Tst IK.Top)))
-    && (List.is_empty cs)
+  | K.Pls (l, r) ->
+    if (SKU.eq_kat_expr axioms
+          (K.expr_to_kat e) (K.expr_to_kat (K.Tst K.Top)))
+       && (List.is_empty cs)
     then true, []
     else
       let rm1 = lazy (matcher l cs) in
       let rm2 = lazy (matcher r cs) in
       rm1 ||| rm2
-  | IK.Dot (l, r) ->
+  | K.Dot (l, r) ->
     (* Assuming that the order of l and r in cs is not changed *)
     let spl_cs = split_ordered_lst cs in
     let rec find_split spl =
@@ -589,23 +579,23 @@ and expr_is_match
         else find_split ss
     in
     find_split (List.rev spl_cs)
-  | IK.Str s ->
+  | K.Str s ->
     (match cs with
      | [] -> true, []
-     | _ -> matcher (IK.Dot (s, e)) cs)
-  | IK.Tst t -> test_is_match axioms t cs
-  | IK.Var v ->
+     | _ -> matcher (K.Dot (s, e)) cs)
+  | K.Tst t -> test_is_match axioms t cs
+  | K.Var v ->
     (match cs with
      | [] -> true, []
      | [(CVar c)] ->
-       if SKW.eq_var (IK.V.to_kat v) c then
+       if SKU.eq_var (IK.V.to_kat v) c then
          true, [VMap (c, v)]
        else false, []
      | _ -> false, [])
 
 and test_is_match
     (axioms: H.t)
-    (t: IK.test)
+    (t: K.test)
     (cs: csym list)
   : (bool * cmap list) =
   if List.exists (fun c ->
@@ -614,9 +604,9 @@ and test_is_match
   else
     let matcher = test_is_match axioms in
     match t with
-    | IK.Dsj (l, r) ->
-      if (SKW.eq_kat_expr axioms
-            (IK.kat_of_expr (IK.Tst t)) (IK.kat_of_expr (IK.Tst IK.Top)))
+    | K.Dsj (l, r) ->
+      if (SKU.eq_kat_expr axioms
+          (K.expr_to_kat (K.Tst t)) (K.expr_to_kat (K.Tst K.Top)))
       && (List.is_empty cs)
       then true, []
       else
@@ -632,7 +622,7 @@ and test_is_match
             else find_split ss
         in
         find_split spl_cs
-    | IK.Cnj (l, r) ->
+    | K.Cnj (l, r) ->
       let spl_cs = split_lst cs in
       let rec find_split spl =
         match spl with
@@ -645,50 +635,50 @@ and test_is_match
           else find_split ss
       in
       find_split spl_cs
-    | IK.Neg e ->
+    | K.Neg e ->
       (match e with
-       | IK.Prd k ->
+       | K.Prd k ->
          (match cs with
           | [(CKey (b, c))] ->
-            if not b && (SKW.eq_key (IK.K.to_kat k) c) then
+            if not b && (SKU.eq_key (IK.K.to_kat k) c) then
               true, [KMap (c, k)]
             else false, []
           | _ -> false, [])
-       | _ -> matcher (IK.test_norm_neg t) cs)
-    | IK.Top ->
+       | _ -> matcher (K.test_norm_neg t) cs)
+    | K.Top ->
       (match cs with
        | [] -> true, []
        | _ -> false, [])
-    | IK.Bot -> false, []
-    | IK.Prd k ->
+    | K.Bot -> false, []
+    | K.Prd k ->
       (match cs with
        | [(CKey (b, c))] ->
-         if b && (SKW.eq_key (IK.K.to_kat k) c) then
+         if b && (SKU.eq_key (IK.K.to_kat k) c) then
            true, [KMap (c, k)]
          else false, []
        | _ -> false, [])
 
 let rec match_cex_rem
     (axioms: H.t)
-    (e: IK.expr)
+    (e: K.expr)
     (cs: csym list)
   : (bool * cmap list) =
-  let e_syms = BatSet.of_list (IK.syms_of_expr e) in
+  let e_syms = K.expr_kat_syms e in
   let cs = List.filter (fun c ->
       match c with
       | CVar v -> (* BatSet.mem v e_syms *) true
       | CKey (_, k) -> BatSet.mem k e_syms) cs in
-  let () = DB.nhprint "match_cex: cs: " (pr_list pr_csym) cs in
+  let () = DB.dhprint "match_cex: cs: " (pr_list pr_csym) cs in
   let lexicographic_compare (r1, m1) (r2, m2) =
     let compare_r = compare (List.length r1) (List.length r2) in
-    if compare_r == 0 then
+    if compare_r != 0 then
       -(compare (List.length m1) (List.length m2))
     else compare_r
   in
 
   let matching_res = expr_match_rem axioms e cs in
   let sorted_matching_res = List.sort lexicographic_compare matching_res in
-  let () = DB.nhprint "sorted_matching_res:"
+  let () = DB.hprint "sorted_matching_res:"
       (pr_list ~sep:"\n"
          (pr_pair (pr_list pr_csym) (pr_list pr_cmap)))
       sorted_matching_res in
@@ -697,83 +687,49 @@ let rec match_cex_rem
   | (rem_cs, mappings)::_ ->
     if List.is_empty rem_cs then true, mappings
     else false, mappings
-
-and eq_rem r1 r2 =
-  match r1, r2 with
-  | [], [] -> true
-  | s1::ss1, s2::ss2 ->
-    (eq_csym s1 s2) && (eq_rem ss1 ss2)
-  | _ -> false
-
-and eq_match_rem (r1, ms1) (r2, ms2) =
-  (eq_rem r1 r2) &&
-  List.for_all (fun m1 -> List.mem eq_cmap m1 ms2) ms1 &&
-  List.for_all (fun m2 -> List.mem eq_cmap m2 ms1) ms2
-
+  
 and expr_match_rem
     (axioms: H.t)
-    (e: IK.expr)
+    (e: K.expr)
     (cs: csym list)
   : (csym list * cmap list) list =
   let matcher = expr_match_rem axioms in
-  let r =
-    if (SKW.eq_kat_expr axioms
-          (IK.kat_of_expr e) (IK.kat_of_expr (IK.Tst IK.Top)))
-    then [(cs, [])]
-    else
-      let r =
-        match e with
-        | IK.Pls (l, r) ->
-          (matcher l cs) @ (matcher r cs)
-        | IK.Dot (l, r) ->
-          let rem_match_l = matcher l cs in
-          let rl =
-            List.map (fun (l_rem_cs, l_cmap) ->
-                let rem_match_r = matcher r l_rem_cs in
-                List.map (fun (r_rem_cs, r_cmap) ->
-                    (r_rem_cs, l_cmap @ r_cmap)
-                  ) rem_match_r
-              ) rem_match_l
-            |> List.concat
-          in
-          if List.is_empty rl then rem_match_l
-          else rl
-        | IK.Str s ->
-          [(cs, [])] @ (matcher (IK.Dot (s, e)) cs)
-        | IK.Tst t -> test_match_rem axioms t cs
-        | IK.Var v ->
-          let rec helper cs =
-            match cs with
-            | [] -> []
-            | (CVar c)::cr ->
-              if SKW.eq_var (IK.V.to_kat v) c then
-                [(cr, [VMap(c, v)])]
-              else if SKW.eq_kat_expr axioms
-                  (Kat.Var (IK.V.to_kat v)) (Kat.Var c) then
-                [(cr, [])]
-              else []
-            | (CKey _)::cr -> helper cr
-          in
-          helper cs
+  if (SKU.eq_kat_expr axioms
+        (K.expr_to_kat e) (K.expr_to_kat (K.Tst K.Top)))
+  then [(cs, [])]
+  else
+    match e with
+    | K.Pls (l, r) -> (matcher l cs) @ (matcher r cs)
+    | K.Dot (l, r) ->
+      let rem_match_l = matcher l cs in
+      List.map (fun (l_rem_cs, l_cmap) ->
+          let rem_match_r = matcher r l_rem_cs in
+          List.map (fun (r_rem_cs, r_cmap) ->
+              (r_rem_cs, l_cmap @ r_cmap)
+            ) rem_match_r
+        ) rem_match_l
+      |> List.concat
+    | K.Str s ->
+      [(cs, [])] @ (matcher (K.Dot (s, e)) cs)
+    | K.Tst t -> test_match_rem axioms t cs
+    | K.Var v ->
+      let rec helper cs =
+        match cs with
+        | [] -> []
+        | (CVar c)::cr ->
+          if SKU.eq_var (IK.V.to_kat v) c then
+            [(cr, [VMap(c, v)])]
+          else if SKU.eq_kat_expr axioms
+              (Kat.Var (IK.V.to_kat v)) (Kat.Var c) then
+            [(cr, [])]
+          else []
+        | (CKey _)::cr -> helper cr
       in
-      List.dedup eq_match_rem r
-  in
-  r
+      helper cs
 
 and test_match_rem
     (axioms: H.t)
-    (t: IK.test)
-    (cs: csym list)
-  : (csym list * cmap list) list =
-  Debug.trace_2 "test_match_rem"
-    (IK.pr_test, pr_list pr_csym,
-     pr_list (pr_pair (pr_list pr_csym) (pr_list pr_cmap)))
-    t cs
-    (fun () -> test_match_rem_x axioms t cs)
-
-and test_match_rem_x
-    (axioms: H.t)
-    (t: IK.test)
+    (t: K.test)
     (cs: csym list)
   : (csym list * cmap list) list =
   let rec split cs =
@@ -785,15 +741,13 @@ and test_match_rem_x
       (b, c)::test_cr, rem_cr
   in
 
-  let test_sym_match_rem is_pos k =
+  let test_sym_match_rem is_pos k = 
     let test_cs, rem_cs = split cs in
-    let () = Debug.nhprint "test_cs: "
-        (pr_list (pr_pair string_of_bool SKW.pr_key)) test_cs in
     let rec helper test_cs =
       match test_cs with
       | [] -> [], []
       | (b, c)::test_cr ->
-        if (b == is_pos) && (SKW.eq_key (IK.K.to_kat k) c) then
+        if (b == is_pos) && (SKU.eq_key (IK.K.to_kat k) c) then
           [KMap (c, k)], test_cr
         else
           let mappings, rem_test_cr = helper test_cr in
@@ -807,61 +761,39 @@ and test_match_rem_x
   in
 
   let matcher = test_match_rem axioms in
-  let r =
-    if (SKW.eq_kat_expr axioms
-          (IK.kat_of_expr (IK.Tst t)) (IK.kat_of_expr (IK.Tst IK.Top)))
-    then [(cs, [])]
-    else
-      let r = match t with
-        | IK.Dsj (l, r) -> (matcher l cs) @ (matcher r cs)
-        | IK.Cnj (l, r) ->
-          let rem_match_l = matcher l cs in
-          let rl =
-            List.map (fun (l_rem_cs, l_cmap) ->
-                let rem_match_r = matcher r l_rem_cs in
-                List.map (fun (r_rem_cs, r_cmap) ->
-                    (r_rem_cs, l_cmap @ r_cmap)) rem_match_r
-              ) rem_match_l
-            |> List.concat
-          in
-          let rem_match_r = matcher r cs in
-          let rr =
-            List.map (fun (r_rem_cs, r_cmap) ->
-                let rem_match_l = matcher l r_rem_cs in
-                List.map (fun (l_rem_cs, l_cmap) ->
-                    (l_rem_cs, l_cmap @ r_cmap)) rem_match_l
-              ) rem_match_r
-            |> List.concat
-          in
-          if List.is_empty (rl @ rr) then
-            rem_match_l @ rem_match_r
-          else rl @ rr
-        | IK.Top -> [(cs, [])]
-        | IK.Bot -> []
-        | IK.Prd k -> test_sym_match_rem true k
-        | IK.Neg e ->
-          (match e with
-           | IK.Prd k -> test_sym_match_rem false k
-           | _ -> matcher (IK.test_norm_neg t) cs)
-      in
-      List.dedup eq_match_rem r
-  in
-  let () = Debug.nhprint "t: " IK.pr_test t in
-  let () = Debug.nhprint "cs: " (pr_list pr_csym) cs in
-  let () = Debug.nhprint "r: "
-      (pr_list (pr_pair (pr_list pr_csym) (pr_list pr_cmap))) r in
-  r
+  if (SKU.eq_kat_expr axioms
+        (K.expr_to_kat (K.Tst t)) (K.expr_to_kat (K.Tst K.Top)))
+  then [(cs, [])]
+  else
+    match t with
+    | K.Dsj (l, r) -> (matcher l cs) @ (matcher r cs)
+    | K.Cnj (l, r) ->
+      let rem_match_l = matcher l cs in
+      List.map (fun (l_rem_cs, l_cmap) ->
+          let rem_match_r = matcher r l_rem_cs in
+          List.map (fun (r_rem_cs, r_cmap) ->
+              (r_rem_cs, l_cmap @ r_cmap)
+            ) rem_match_r
+        ) rem_match_l
+      |> List.concat
+    | K.Top -> [(cs, [])]
+    | K.Bot -> []
+    | K.Prd k -> test_sym_match_rem true k
+    | K.Neg e ->
+      (match e with
+       | K.Prd k -> test_sym_match_rem false k
+       | _ -> matcher (K.test_norm_neg t) cs)
 
 let rec add_label_gstring
     (axioms: H.t)
     (gs: Kat.gstring)
-    (e: IK.expr)
+    (e: K.expr)
   : ksym list =
   let cs = csyms_of_gstring gs in
-  let () = DB.dhprint "add_label_gstring: e: " IK.pr_expr e in
+  let () = DB.dhprint "add_label_gstring: e: " K.pr_expr e in
   let () = DB.dhprint "add_label_gstring: cs: " (pr_list pr_csym) cs in
   let r, matcher = match_cex_rem axioms e cs in
-  let () = DB.hprint "add_label_gstring: matcher: " (pr_list pr_cmap) matcher in
+  let () = DB.dhprint "add_label_gstring: matcher: " (pr_list pr_cmap) matcher in
   (* if r then
    *   add_label_csyms matcher cs
    * else
@@ -891,7 +823,7 @@ let rec add_label_gstring
  *   | [] -> IK.K.fresh_from_kat k, []
  *   | m::rm ->
  *     (match m with
- *      | KMap (k1, k2) when SKW.eq_key k k1 ->
+ *      | KMap (k1, k2) when SKU.eq_key k k1 ->
  *        k2, rm
  *      | _ -> IK.K.fresh_from_kat k, ms)
  * 
@@ -900,7 +832,7 @@ let rec add_label_gstring
  *   | [] -> IK.V.fresh_from_kat v, []
  *   | m::rm ->
  *     (match m with
- *      | VMap (v1, v2) when SKW.eq_var v v1 ->
+ *      | VMap (v1, v2) when SKU.eq_var v v1 ->
  *        v2, rm
  *      | _ -> IK.V.fresh_from_kat v, ms) *)
 
@@ -931,7 +863,7 @@ and add_label_key ms k =
     | [] -> None, []
     | (VMap _)::_ -> None, ms
     | (KMap (k1, k2) as m)::mr ->
-      if SKW.eq_key k k1 then
+      if SKU.eq_key k k1 then
         Some k2, mr
       else
         let nk_opt, rem_mr = helper mr in
@@ -944,7 +876,7 @@ and add_label_var ms v =
   | [] -> None, []
   | m::rm ->
     (match m with
-     | VMap (v1, v2) when SKW.eq_var v v1 ->
+     | VMap (v1, v2) when SKU.eq_var v v1 ->
        Some v2, rm
      | _ -> None, ms)
 
@@ -958,26 +890,26 @@ let min3 key_of d1 d2 d3 =
 
 let dot_kelt k1 k2 =
   match k1, k2 with
-  | KExpr e1, KExpr e2 -> KExpr (IK.Dot (e1, e2))
-  | KTest e1, KTest e2 -> KTest (IK.Cnj (e1, e2))
-  | KExpr e1, KTest e2 -> KExpr (IK.Dot (e1, IK.Tst e2))
-  | KTest e1, KExpr e2 -> KExpr (IK.Dot (IK.Tst e1, e2))
+  | KExpr e1, KExpr e2 -> KExpr (K.Dot (e1, e2))
+  | KTest e1, KTest e2 -> KTest (K.Cnj (e1, e2))
+  | KExpr e1, KTest e2 -> KExpr (K.Dot (e1, K.Tst e2))
+  | KTest e1, KExpr e2 -> KExpr (K.Dot (K.Tst e1, e2))
 
 let neg_kelt k =
   match k with
-  | KTest e -> KTest (IK.Neg e)
+  | KTest e -> KTest (K.Neg e)
   | _ -> warning_unexpected "neg_kelt" pr_kelt k
 
 let pls_kelt k1 k2 =
   match k1, k2 with
-  | KExpr e1, KExpr e2 -> KExpr (IK.Pls (e1, e2))
-  | KTest e1, KTest e2 -> KTest (IK.Dsj (e1, e2))
-  | KExpr e1, KTest e2 -> KExpr (IK.Pls (e1, IK.Tst e2))
-  | KTest e1, KExpr e2 -> KExpr (IK.Pls (IK.Tst e1, e2))
+  | KExpr e1, KExpr e2 -> KExpr (K.Pls (e1, e2))
+  | KTest e1, KTest e2 -> KTest (K.Dsj (e1, e2))
+  | KExpr e1, KTest e2 -> KExpr (K.Pls (e1, K.Tst e2))
+  | KTest e1, KExpr e2 -> KExpr (K.Pls (K.Tst e1, e2))
 
 let str_kelt k =
   match k with
-  | KExpr e -> KExpr (IK.Str e)
+  | KExpr e -> KExpr (K.Str e)
   | _ -> warning_unexpected "str_kelt" pr_kelt k
 
 let (+++) (d1, a1, (mf1, ms1)) (d2, a2, (mf2, ms2)) =
@@ -1012,20 +944,20 @@ let rec replace_cost k =
 
 and replace_cost_expr expr =
   match expr with
-  | IK.Pls (l, r) -> Core.Int.max (replace_cost_expr l) (replace_cost_expr r) + 1
-  | IK.Dot (h, t) -> (replace_cost_expr h) + (replace_cost_expr t) + 1
-  | IK.Str e -> (replace_cost_expr e) + 1
-  | IK.Tst e -> replace_cost_test e
-  | IK.Var _ -> 1
+  | K.Pls (l, r) -> Core.Int.max (replace_cost_expr l) (replace_cost_expr r) + 1
+  | K.Dot (h, t) -> (replace_cost_expr h) + (replace_cost_expr t) + 1
+  | K.Str e -> (replace_cost_expr e) + 1
+  | K.Tst e -> replace_cost_test e
+  | K.Var _ -> 1
 
 and replace_cost_test tst =
   match tst with
-  | IK.Dsj (l, r) -> Core.Int.max (replace_cost_test l) (replace_cost_test r) + 1
-  | IK.Cnj (l, r) -> (replace_cost_test l) + (replace_cost_test r) + 1
-  | IK.Neg e -> (replace_cost_test e) + 1
-  | IK.Top
-  | IK.Bot
-  | IK.Prd _ -> 1
+  | K.Dsj (l, r) -> Core.Int.max (replace_cost_test l) (replace_cost_test r) + 1
+  | K.Cnj (l, r) -> (replace_cost_test l) + (replace_cost_test r) + 1
+  | K.Neg e -> (replace_cost_test e) + 1
+  | K.Top
+  | K.Bot
+  | K.Prd _ -> 1
 
 and max_replace_cost k1 k2 =
   Core.Int.max (replace_cost k1) (replace_cost k2)
@@ -1035,58 +967,58 @@ let replace_cost_ksym k =
   | CVar v ->
     let instr = KT.spl_instr_of_var v in
     (match instr with
-     | None -> replace_cost_expr (IK.Var v)
-     | Some (_, i) ->
-       (match i with
-        | S.CALL (_, c, _) when List.mem String.equal c !no_removed_events ->
-          !sum_cost
-        | _ -> replace_cost_expr (IK.Var v)))
+    | None -> replace_cost_expr (K.Var v)
+    | Some (_, i) ->
+      (match i with
+       | S.CALL (_, c, _) when List.mem String.equal c !no_removed_events ->
+         !sum_cost
+       | _ -> replace_cost_expr (K.Var v)))
   | CKey (b, k) ->
-    let prd = IK.Prd k in
-    replace_cost_test (if b then prd else IK.Neg prd)
+    let prd = K.Prd k in
+    replace_cost_test (if b then prd else K.Neg prd)
 
 let max_replace_cost_ksym k1 k2 =
   Core.Int.max (replace_cost_ksym k1) (replace_cost_ksym k2)
 
 let rec len_of_kat k =
   match k with
-  | IK.Dot (l, r) -> len_of_kat l + len_of_kat r
+  | K.Dot (l, r) -> len_of_kat l + len_of_kat r
   | _ -> 1
 
 let key_of_ed (d, _, _) = d
 
 let edit_distance_test_norec edit_distance_test (t1, t2) =
   match t1, t2 with
-  | IK.Top, IK.Top
-  | IK.Bot, IK.Bot ->
+  | K.Top, K.Top
+  | K.Bot, K.Bot ->
     let m = (KTest t1, KTest t2) in
     (!match_cost, [], m)
-  | IK.Prd k1, IK.Prd k2 ->
+  | K.Prd k1, K.Prd k2 ->
     let m = (KTest t1, KTest t2) in
     if IK.K.eq k1 k2 then (!match_cost, [], m)
     else (1, [Replace ((KFst, KTest t1), (KSnd, KTest t2))], m)
-  | IK.Neg n1, IK.Neg n2 -> neg_dist (edit_distance_test (n1, n2))
-  | IK.Cnj (l1, r1), IK.Cnj (l2, r2) ->
+  | K.Neg n1, K.Neg n2 -> neg_dist (edit_distance_test (n1, n2))
+  | K.Cnj (l1, r1), K.Cnj (l2, r2) ->
     let da1 = edit_distance_test (l1, l2) ++. edit_distance_test (r1, r2) in
     let da2 = edit_distance_test (l1, r2) ++. edit_distance_test (r1, l2) in
     min2 key_of_ed da1 da2
-  | IK.Cnj (l1, r1), _ ->
+  | K.Cnj (l1, r1), _ ->
     let dl = (1, [Remove (KCnj KFst, KTest r1)]) ++? edit_distance_test (l1, t2) in
     let dr = (1, [Remove (KCnj KFst, KTest l1)]) ++? edit_distance_test (r1, t2) in
     min2 key_of_ed dl dr
-  | _, IK.Cnj (l2, r2) ->
+  | _, K.Cnj (l2, r2) ->
     let dl = (1, [Remove (KCnj KSnd, KTest r2)]) ++? edit_distance_test (t1, l2) in
     let dr = (1, [Remove (KCnj KSnd, KTest l2)]) ++? edit_distance_test (t1, r2) in
     min2 key_of_ed dl dr
-  | IK.Dsj (l1, r1), IK.Dsj (l2, r2) ->
+  | K.Dsj (l1, r1), K.Dsj (l2, r2) ->
     let da1 = edit_distance_test (l1, l2) +++ edit_distance_test (r1, r2) in
     let da2 = edit_distance_test (l1, r2) +++ edit_distance_test (r1, l2) in
     min2 key_of_ed da1 da2
-  | IK.Dsj (l1, r1), _ ->
+  | K.Dsj (l1, r1), _ ->
     let dl = (1, [Remove (KDsj KFst, KTest r1)]) ++? edit_distance_test (l1, t2) in
     let dr = (1, [Remove (KDsj KFst, KTest l1)]) ++? edit_distance_test (r1, t2) in
     min2 key_of_ed dl dr
-  | _, IK.Dsj (l2, r2) ->
+  | _, K.Dsj (l2, r2) ->
     let dl = (1, [Remove (KDsj KSnd, KTest r2)]) ++? edit_distance_test (t1, l2) in
     let dr = (1, [Remove (KDsj KSnd, KTest l2)]) ++? edit_distance_test (t1, r2) in
     min2 key_of_ed dl dr
@@ -1101,25 +1033,25 @@ let edit_distance_test =
 let edit_distance_norec edit_distance (k1, k2) =
   let res = 
     match k1, k2 with
-    | IK.Var v1, IK.Var v2 ->
+    | K.Var v1, K.Var v2 ->
       let m = (KExpr k1, KExpr k2) in
       if IK.V.eq v1 v2 then (!match_cost, [], m)
       else (1, [Replace ((KFst, KExpr k1), (KSnd, KExpr k2))], m)
-    | IK.Tst t1, IK.Tst t2 -> edit_distance_test (t1, t2)
-    | IK.Str s1, IK.Str s2 -> str_dist (edit_distance (s1, s2))
-    | IK.Pls (l1, r1), IK.Pls (l2, r2) ->
+    | K.Tst t1, K.Tst t2 -> edit_distance_test (t1, t2)
+    | K.Str s1, K.Str s2 -> str_dist (edit_distance (s1, s2))
+    | K.Pls (l1, r1), K.Pls (l2, r2) ->
       let da1 = edit_distance (l1, l2) +++ edit_distance (r1, r2) in
       let da2 = edit_distance (l1, r2) +++ edit_distance (r1, l2) in
       min2 key_of_ed da1 da2
-    | IK.Pls (l1, r1), _ ->
+    | K.Pls (l1, r1), _ ->
       let dl = (1, [Remove (KPls KFst, KExpr r1)]) ++? edit_distance (l1, k2) in
       let dr = (1, [Remove (KPls KFst, KExpr l1)]) ++? edit_distance (r1, k2) in
       min2 key_of_ed dl dr
-    | _, IK.Pls (l2, r2) ->
+    | _, K.Pls (l2, r2) ->
       let dl = (1, [Remove (KPls KSnd, KExpr r2)]) ++? edit_distance (k1, l2) in
       let dr = (1, [Remove (KPls KSnd, KExpr l2)]) ++? edit_distance (k1, r2) in
       min2 key_of_ed dl dr
-    | IK.Dot (h1, t1), IK.Dot (h2, t2) ->
+    | K.Dot (h1, t1), K.Dot (h2, t2) ->
       let replace_hd_cost = edit_distance (h1, h2) in
       let replace_hd_dst = replace_hd_cost ++. edit_distance (t1, t2) in
       let remove_hd_fst_dst =
@@ -1129,7 +1061,7 @@ let edit_distance_norec edit_distance (k1, k2) =
         (replace_cost (KExpr h2), [Remove (KDot KSnd, KExpr h2)])
         ++? edit_distance (k1, t2) in
       min3 key_of_ed replace_hd_dst remove_hd_fst_dst remove_hd_snd_dst
-    | IK.Dot (h1, t1), _ ->
+    | K.Dot (h1, t1), _ ->
       let remove_hd_dst =
         (replace_cost (KExpr h1), [Remove (KDot KFst, KExpr h1)])
         ++? edit_distance (t1, k2) in
@@ -1137,7 +1069,7 @@ let edit_distance_norec edit_distance (k1, k2) =
         (replace_cost (KExpr t1),
          [Remove (KDot KFst, KExpr t1)]) ++? edit_distance (h1, k2) in
       min2 key_of_ed remove_hd_dst remove_tl_dst
-    | _, IK.Dot (h2, t2) ->
+    | _, K.Dot (h2, t2) ->
       let remove_hd_dst =
         (replace_cost (KExpr h2),
          [Remove (KDot KSnd, KExpr h2)]) ++? edit_distance (k1, t2) in
@@ -1145,9 +1077,9 @@ let edit_distance_norec edit_distance (k1, k2) =
         (replace_cost (KExpr t2),
          [Remove (KDot KSnd, KExpr t2)]) ++? edit_distance (k1, h2) in
       min2 key_of_ed remove_hd_dst remove_tl_dst
-    | IK.Tst t, _
-    | _, IK.Tst t ->
-      let replace_cost = if IK.is_top t then 1 else !sum_cost in
+    | K.Tst t, _
+    | _, K.Tst t ->
+      let replace_cost = if K.test_is_top t then 1 else !sum_cost in
       let m = (KExpr k1, KExpr k2) in
       (replace_cost, [Replace ((KFst, KExpr k1), (KSnd, KExpr k2))], m)
     | _ ->
@@ -1169,11 +1101,7 @@ let edit_distance (k1, k2) =
   in
   let () = DB.dhprint "sum_cost: " pr_int !sum_cost in
   let () = DB.dhprint "match_cost: " pr_int !match_cost in
-  try
-    Memo.memo_rec edit_distance_norec (k1, k2)
-  with e ->
-    let () = DB.hprint "edit_distance: " Printexc.to_string e in
-    raise e
+  Memo.memo_rec edit_distance_norec (k1, k2)
 
 (* Utils *)
 let is_complete_result = function
@@ -1237,7 +1165,7 @@ let merge_results_pair fst_kat snd_kat symtab rop
 let eq_axiom a1 a2 =
   (List.length a1 == List.length a2) &&
   (List.for_all (fun (v1, b1) ->
-       let mth_opt = List.find_opt (fun (v2, _) -> SKW.eq_key v1 v2) a2 in
+       let mth_opt = List.find_opt (fun (v2, _) -> SKU.eq_key v1 v2) a2 in
        match mth_opt with
        | None -> false
        | Some (_, b2) -> b1 == b2) a1)
@@ -1277,16 +1205,16 @@ let gen_actions_instructions (v1, instrs1) (v2, instrs2) =
  *   let ks2 = List.map fst as2 in
  *   let test_symbs =
  *     List.filter (fun s ->
- *         not (List.exists (fun k -> SKW.eq_key k s) !analyzed_test_symbols))
+ *         not (List.exists (fun k -> SKU.eq_key k s) !analyzed_test_symbols))
  *       (ks1 @ ks2)
- *     |> List.dedup SKW.eq_key in
+ *     |> List.dedup SKU.eq_key in
  *   match test_symbs with
  *   | [] -> []
  *   | s::_ ->
- *     let () = Debug.dhprint "Considered test symbol: " SKW.pr_key s in
- *     let test_conds = SKW.keys_of_value etab s in
+ *     let () = Debug.dhprint "Considered test symbol: " SKU.pr_key s in
+ *     let test_conds = SKU.keys_of_value etab s in
  *     let test_pos =
- *       SKW.keys_of_value SKW.loc_symb_mapping s
+ *       SKU.keys_of_value SKU.loc_symb_mapping s
  *       |> List.dedup SU.eq_point in
  *     let () = Debug.dhprint "Program locations: "
  *         (pr_list SU.pr_point) test_pos in
@@ -1306,13 +1234,13 @@ let gen_actions_instructions (v1, instrs1) (v2, instrs2) =
  *     (s1: diff_symb) (s2: diff_symb): refinement list =
  *   let v1, as1 = s1 in
  *   let v2, as2 = s2 in
- *   if SKW.eq_key v1 v2 then
+ *   if SKU.eq_key v1 v2 then
  *     gen_actions_conditions etab as1 as2
  *   else
  *     (\* let v1 = IK.V.to_kat v1 in
  *      * let v2 = IK.V.to_kat v2 in *\)
- *     let instrs1 = SKW.keys_of_value itab v1 in
- *     let instrs2 = SKW.keys_of_value itab v2 in
+ *     let instrs1 = SKU.keys_of_value itab v1 in
+ *     let instrs2 = SKU.keys_of_value itab v2 in
  *     let () = Debug.dhprint "First diff instr: "
  *         (pr_list Spl_utils.pr_instruction) instrs1 in
  *     let () = Debug.dhprint "Second diff instr: "
@@ -1355,33 +1283,33 @@ let test_of_symbol
 
 let rec test_contains_key k sign t =
   match t with
-  | IK.Dsj (l, r)
-  | IK.Cnj (l, r) -> (test_contains_key k sign l) || (test_contains_key k sign r)
-  | IK.Top | IK.Bot -> false
-  | IK.Prd p -> if IK.K.eql k p then sign else false
-  | IK.Neg nt -> test_contains_key k (not sign) nt
+  | K.Dsj (l, r)
+  | K.Cnj (l, r) -> (test_contains_key k sign l) || (test_contains_key k sign r)
+  | K.Top | K.Bot -> false
+  | K.Prd p -> if IK.K.eql k p then sign else false
+  | K.Neg nt -> test_contains_key k (not sign) nt
 
 let rec direct_vars_of_key
     (axioms: H.t)
     (k: IK.K.t)
     (sign: bool)
-    (e: IK.expr)
+    (e: K.expr)
   : IK.V.t list =
   let rec helper e =
     match e with
-    | IK.Pls (l, r) ->
+    | K.Pls (l, r) ->
       let sl = helper l in
       if List.not_empty sl then sl
       else helper r
-    | IK.Dot (l, r) ->
+    | K.Dot (l, r) ->
       (match l, r with
-       | IK.Tst t, _ ->
+       | K.Tst t, _ ->
          if test_contains_key k sign t then
            let r_ksyms = ksyms_of_expr ~get_tests:false axioms r in
            List.map (fun s -> match s with
                  CVar v -> [v] | _ -> []) r_ksyms |> List.concat
          else helper r
-       | IK.Str s, IK.Tst t ->
+       | K.Str s, K.Tst t ->
          if test_contains_key k sign t then []
          else helper s
        | _, _ ->
@@ -1391,55 +1319,55 @@ let rec direct_vars_of_key
     | _ -> []
   in helper e
 
-let rec rev_expr (e: IK.expr) =
+let rec rev_expr (e: K.expr) =
   match e with
-  | IK.Var _
-  | IK.Tst _ -> e
-  | IK.Str s -> IK.Str (rev_expr s)
-  | IK.Pls (l, r) -> IK.Pls (rev_expr r, rev_expr l)
-  | IK.Dot (l, r) -> IK.Dot (rev_expr r, rev_expr l)
+  | K.Var _
+  | K.Tst _ -> e
+  | K.Str s -> K.Str (rev_expr s)
+  | K.Pls (l, r) -> K.Pls (rev_expr r, rev_expr l)
+  | K.Dot (l, r) -> K.Dot (rev_expr r, rev_expr l)
 
 let rec direct_test_of_var
     (v: IK.V.t)
-    (e: IK.expr)
-  : IK.test option =
+    (e: K.expr)
+  : K.test option =
   let rec helper rev_e =
     match rev_e with
-    | IK.Var kv -> IK.V.eql v kv, None
-    | IK.Pls (rev_r, rev_l) ->
+    | K.Var kv -> IK.V.eql v kv, None
+    | K.Pls (rev_r, rev_l) ->
       let (is_found, _) as res_r = helper rev_r in
       if is_found then res_r
       else helper rev_l
-    | IK.Dot (rev_r, rev_l) ->
+    | K.Dot (rev_r, rev_l) ->
       let (is_found, test_r) as res_r = helper rev_r in
       if is_found then
         match test_r with
         | None -> true, closest_test_of_rev_expr rev_l
         | Some _ -> res_r
       else helper rev_l
-    | IK.Str rev_s -> helper rev_s
-    | IK.Tst _ -> false, None
+    | K.Str rev_s -> helper rev_s
+    | K.Tst _ -> false, None
   in
   let _, res = helper (rev_expr e) in
   res
 
 and closest_test_of_rev_expr e =
   match e with
-  | IK.Tst t -> Some t
-  | IK.Dot (rev_r, rev_l) ->
+  | K.Tst t -> Some t
+  | K.Dot (rev_r, rev_l) ->
     let res = closest_test_of_rev_expr rev_r in
     (match res with
-     | None -> closest_test_of_rev_expr rev_l
-     | Some _ -> res)
-  | IK.Var _
-  | IK.Str _
-  | IK.Pls _ -> None
+    | None -> closest_test_of_rev_expr rev_l
+    | Some _ -> res)
+  | K.Var _
+  | K.Str _
+  | K.Pls _ -> None
 
 let refinement_of_kaction
     (axioms: H.t)
     (kacts: ksym kaction list)
-    (fst_kat: IK.expr)
-    (snd_kat: IK.expr)
+    (fst_kat: K.expr)
+    (snd_kat: K.expr)
     (fst_ksyms: ksym list)
     (snd_ksyms: ksym list)
     (kact: ksym kaction)
@@ -1513,7 +1441,7 @@ let refinement_of_kaction
             in
             let () = DB.hprint "kact: " (pr_kaction pr_ksym) kact in
             let () = DB.hprint "removed tests: " (pr_list IK.K.string_of) ksym_tests in
-            let () = DB.hprint "direct tests: " (pr_opt IK.pr_test) direct_test in
+            let () = DB.hprint "direct tests: " (pr_opt K.pr_test) direct_test in
             let () = DB.hprint "not_removable: " pr_bool not_removable in
             let remove_assumpts =
               List.map (fun k -> mk_assumpts k (pos_of_kpos kp)) ksym_tests
@@ -1594,7 +1522,7 @@ let norm_cex (cex: Kat.gstring) =
  *    *   | a1::_, [] -> (Some a1, None)
  *    *   | [], a2::_ -> (None, Some a2)
  *    *   | ((k1, b1) as a1)::as1, ((k2, b2) as a2)::as2 ->
- *    *     if SKW.eq_key k1 k2 then
+ *    *     if SKU.eq_key k1 k2 then
  *    *       if b1 == b2 then helper as1 as2
  *    *       else (Some a1, Some a2)
  *    *     else (Some a1, Some a2)
@@ -1602,7 +1530,7 @@ let norm_cex (cex: Kat.gstring) =
  *    * helper (List.rev fst_as) (List.rev snd_as) *\)
  *   let find_diff as1 as2 = List.find_opt (fun (k1, b1) ->
  *       not (List.exists (fun (k2, b2) ->
- *           SKW.eq_key k1 k2 && b1 == b2) as2)) as1 in
+ *           SKU.eq_key k1 k2 && b1 == b2) as2)) as1 in
  *   (find_diff fst_as snd_as, find_diff snd_as fst_as) *)
 
 (* let first_diff_symbol
@@ -1614,7 +1542,7 @@ let norm_cex (cex: Kat.gstring) =
  *     | g1::_, [] -> (Some g1, None)
  *     | [], g2::_ -> (None, Some g2)
  *     | ((v1, as1) as g1)::gs1, ((v2, as2) as g2)::gs2 ->
- *       if SKW.eq_var v1 v2 then
+ *       if SKU.eq_var v1 v2 then
  *         match first_diff_atom as1 as2 with
  *         | None, None -> helper gs1 gs2
  *         | Some a1, None -> (Some (v1, [a1]), None)
@@ -1636,7 +1564,7 @@ let eq_atom_instruction instr1 instr2 =
        List.mem String.equal c2 !no_removed_events
     then String.equal c1 c2
     else true
-  (* String.equal c1 c2 *)
+    (* String.equal c1 c2 *)
   | _ -> false
 
 let (++:) (d1, a1, (k1, k2)) (d2, a2, (s1, s2)) =
@@ -1697,9 +1625,9 @@ let edit_distance_cex_norec edit_distance_cex
        in
        let replace_hd_dst = (dst, acts, elems) ++: edit_distance_cex (ks1, ks2) in
        (match has_dummy_label_s1, has_dummy_label_s2 with
-        | true, false -> min2 key_of_ed replace_hd_dst remove_hd_fst_dst
-        | false, true -> min2 key_of_ed replace_hd_dst remove_hd_snd_dst
-        | _ -> min3 key_of_ed replace_hd_dst remove_hd_fst_dst remove_hd_snd_dst)
+       | true, false -> min2 key_of_ed replace_hd_dst remove_hd_fst_dst
+       | false, true -> min2 key_of_ed replace_hd_dst remove_hd_snd_dst
+       | _ -> min3 key_of_ed replace_hd_dst remove_hd_fst_dst remove_hd_snd_dst)
      | CVar v1, CVar v2 ->
        let instr_eq =
          if IK.V.eq v1 v2 then true
@@ -1721,12 +1649,12 @@ let edit_distance_cex_norec edit_distance_cex
          min3 key_of_ed replace_hd_dst remove_hd_fst_dst remove_hd_snd_dst
        else
          min2 key_of_ed remove_hd_fst_dst remove_hd_snd_dst
-     (* let dst, acts =
-      *   if IK.V.eq v1 v2 then (!match_cost, [])
-      *   else (max_replace_cost_ksym k1 k2, [Replace (k1, k2)])
-      * in
-      * let replace_hd_dst = (dst, acts) ++? edit_distance_cex (ks1, ks2) in
-      * min3 key_of_ed replace_hd_dst remove_hd_fst_dst remove_hd_snd_dst *)
+       (* let dst, acts =
+        *   if IK.V.eq v1 v2 then (!match_cost, [])
+        *   else (max_replace_cost_ksym k1 k2, [Replace (k1, k2)])
+        * in
+        * let replace_hd_dst = (dst, acts) ++? edit_distance_cex (ks1, ks2) in
+        * min3 key_of_ed replace_hd_dst remove_hd_fst_dst remove_hd_snd_dst *)
      | _ -> min2 key_of_ed remove_hd_fst_dst remove_hd_snd_dst)
 
 let edit_distance_cex (gs1, gs2) =
@@ -1747,10 +1675,10 @@ let edit_distance_cex (gs1, gs2) =
 let get_cex
     (axioms: H.t)
     (rop: refinement_direction)
-    (fst_kat: IK.expr) (snd_kat: IK.expr)
+    (fst_kat: K.expr) (snd_kat: K.expr)
   : (Kat.gstring * Kat.gstring) option =
   let _, diff = SK.compare ~hyps:axioms
-      (IK.kat_of_expr fst_kat) (IK.kat_of_expr snd_kat) in
+      (K.expr_to_kat fst_kat) (K.expr_to_kat snd_kat) in
   match diff with
   | `E -> None
   | `L snd_cex ->
@@ -1808,14 +1736,14 @@ and wrapped_search
       (List.map (fun assumpt -> assumpt.assumpt_info) assumptions) sprog in
   let () =
     if List.not_empty assumptions then
-      (DB.hprint "assumptions: " (pr_list pr_assumption) assumptions;
-       DB.hprint "instrumented_sprog: " SU.pr_prog instrumented_sprog)
+      (DB.dhprint "assumptions: " (pr_list pr_assumption) assumptions;
+       DB.dhprint "instrumented_sprog: " SU.pr_prog instrumented_sprog)
   in
   (* let klprog = KT.kat_of_prog instrumented_sprog in *)
 
   (** Input *)
   (* let () = if rec_depth == 0 then KT.print_kprog klprog in *)
-  let () = Debug.hprint "kdiff.search: Hypos: " SKW.pr_hypos axioms in
+  let () = Debug.hprint "kdiff.search: Hypos: " SKU.pr_hypos axioms in
   let () = Debug.hprint "kdiff.search: Assumpts: " pr_assumptions assumptions in
   let () = if List.not_empty assumptions then
       Debug.dhprint "kdiff.search: Instrumented prog:\n"
@@ -1827,16 +1755,16 @@ and wrapped_search
    * let snd_lkat = List.assoc snd_pname klprog in *)
   let fst_lkat = KT.kat_of_cmp_proc instrumented_sprog fst_pname snd_pname in
   let snd_lkat = KT.kat_of_cmp_proc instrumented_sprog snd_pname fst_pname in
-  let () = DB.hprint "kdiff.search: fst_kat: " IK.pr_expr fst_lkat in
-  let () = DB.hprint "kdiff.search: snd_kat: " IK.pr_expr snd_lkat in
+  let () = DB.hprint "kdiff.search: fst_kat: " K.pr_expr fst_lkat in
+  let () = DB.hprint "kdiff.search: snd_kat: " K.pr_expr snd_lkat in
 
-  let kdist, time = Func.core_time (fun () ->
-      edit_distance (fst_lkat, snd_lkat)) in
-  let pr_match (m1, m2) =
-    ("fst match: " ^ (pr_kelt m1)) ^ "\n" ^
-    ("snd match: " ^ (pr_kelt m2)) ^ "\n" in
-  let () = DB.hprint "kdist: " (pr_kdist pr_kelt pr_match) kdist in
-  let () = DB.dhprint "time: " pr_core_time time in
+  (* let kdist, time = Func.core_time (fun () ->
+   *     edit_distance (fst_lkat, snd_lkat)) in
+   * let pr_match (m1, m2) =
+   *   ("fst match: " ^ (pr_kelt m1)) ^ "\n" ^
+   *   ("snd match: " ^ (pr_kelt m2)) ^ "\n" in
+   * let () = DB.hprint "kdist: " (pr_kdist pr_kelt pr_match) kdist in
+   * let () = DB.dhprint "time: " pr_core_time time in *)
 
   let cex = get_cex axioms rop fst_lkat snd_lkat in
   match cex with
@@ -1856,7 +1784,7 @@ and handle_cex
     (fst_pname: string) (snd_pname: string)
     (axioms: H.t)
     (rop: refinement_direction)
-    (fst_kat: IK.expr) (snd_kat: IK.expr)
+    (fst_kat: K.expr) (snd_kat: K.expr)
     fst_cex snd_cex
     (logs: refinement_log list)
   : result list =
@@ -1911,7 +1839,7 @@ and handle_refinement
     (fst_pname: string) (snd_pname: string)
     (axioms: H.t)
     (rop: refinement_direction)
-    (fst_kat: IK.expr) (snd_kat: IK.expr)
+    (fst_kat: K.expr) (snd_kat: K.expr)
     (logs: refinement_log list)
   : (refinement list * result list) =
   let handler = fun () ->
@@ -1934,7 +1862,7 @@ and wrapped_handle_refinement
     (fst_pname: string) (snd_pname: string)
     (axioms: H.t)
     (rop: refinement_direction)
-    (fst_kat: IK.expr) (snd_kat: IK.expr)
+    (fst_kat: K.expr) (snd_kat: K.expr)
     (logs: refinement_log list)
   : result list =
   match refine with
@@ -1977,7 +1905,7 @@ let pr_kdiff_res fst_pname snd_pname results =
 
 let analyze (iprog: I.prog_decl)
     (fst_pname: string) (snd_pname: string) =
-  let sprog = Spl.spl_of_prog iprog in
+  let sprog = Iproc.spl_of_prog iprog in
   let () = DB.hprint "sprog: " SU.pr_prog sprog in
   let () = Debug.pprint ("Statistics: " ^ (SU.pr_stats sprog)) in
   let results = search ~rec_depth:0 sprog fst_pname snd_pname

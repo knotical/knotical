@@ -148,30 +148,30 @@ module Make (Token : KnoticalToken) = struct
 rule tokenizer file_name = parse
   | newline { update_loc file_name None 1 false 0; tokenizer file_name lexbuf }
   | blank+ { tokenizer file_name lexbuf }
-  | (int_literal as i)
-      { try  INT_LIT(int_of_string i, i)
-        with Failure _ -> err (Literal_overflow "int") (Loc.of_lexbuf lexbuf) }
+  | int_literal as i
+        { try  INT_LIT(int_of_string i, i)
+          with Failure _ -> err (Literal_overflow "int") (Loc.of_lexbuf lexbuf) }
   | (int_literal as i) "l"
-      { try  INT_LIT(int_of_string i, i) (* can try different converter if needed *)
-        with Failure _ -> err (Literal_overflow "int32") (Loc.of_lexbuf lexbuf) }
+        { try  INT_LIT(int_of_string i, i) (* can try different converter if needed *)
+          with Failure _ -> err (Literal_overflow "int32") (Loc.of_lexbuf lexbuf) }
   | (int_literal as i) "L"
-      { try  INT_LIT(int_of_string i, i) (* can try different converter if needed *)
-        with Failure _ -> err (Literal_overflow "int64") (Loc.of_lexbuf lexbuf) }
+        { try  INT_LIT(int_of_string i, i) (* can try different converter if needed *)
+          with Failure _ -> err (Literal_overflow "int64") (Loc.of_lexbuf lexbuf) }
   | (int_literal as i) "n"
-      { try INT_LIT(int_of_string i, i) (* can try different converter if needed *)
-        with Failure _ -> err (Literal_overflow "nativeint") (Loc.of_lexbuf lexbuf) }
+        { try INT_LIT(int_of_string i, i) (* can try different converter if needed *)
+          with Failure _ -> err (Literal_overflow "nativeint") (Loc.of_lexbuf lexbuf) }
   | "'\\" (_ as c)
-      { err (Illegal_escape (String.make 1 c)) (Loc.of_lexbuf lexbuf) }
+        { err (Illegal_escape (String.make 1 c)) (Loc.of_lexbuf lexbuf) }
   | "/*" { comment_level := 0; comment file_name lexbuf }
   | "//" { line_comment file_name lexbuf }
   | "/*/"
-      { warn Comment_start (Loc.of_lexbuf lexbuf);
-        comment_level := 0;
-        comment file_name lexbuf }
+        { warn Comment_start (Loc.of_lexbuf lexbuf);
+          comment_level := 0;
+          comment file_name lexbuf }
   | "*/" { err Comment_not_end (Loc.of_lexbuf lexbuf) }
   | '"'
-      { with_curr_loc string file_name;
-        let s = buff_contents file_name in STRING (Camlp4.Struct.Token.Eval.string s, s) }
+        { with_curr_loc string file_name;
+          let s = buff_contents file_name in STRING (Camlp4.Struct.Token.Eval.string s, s) }
   | '&' { AND } | "&&" { ANDAND } | "/\\" { METAAND }
   | '|' { OR }  | "||" { OROR } | "\\/" { METAOR }
   | '{' { OBRACE } | '}' { CBRACE }
@@ -186,17 +186,15 @@ rule tokenizer file_name = parse
   | "+=" { PLUS_ASSIGN } | "-=" { MINUS_ASSIGN }
   | "*=" { MULT_ASSIGN } | "/=" { DIV_ASSIGN } | "%=" { MOD_ASSIGN }
   | '*' { NONDET }
-  | "B" { BOT } | "T" { TOP } | "?" { ANY }
   | ident as idstr { 
-    if idstr = "_" then ID (fresh_var_anonym_name ())
-    else
-      try Hashtbl.find tbl_keywords idstr
-      with | _ -> ID idstr }
+      if idstr = "_" then ID (fresh_var_anonym_name ())
+      else
+        try Hashtbl.find tbl_keywords idstr
+        with | _ -> ID idstr }
   | eof { 
-    let pos = lexbuf.lex_curr_p in
-    lexbuf.lex_curr_p <- { pos with pos_bol  = pos.pos_bol  + 1;
-                                    pos_cnum = pos.pos_cnum + 1 }; EOF }
-  | '#' { EOL }
+      let pos = lexbuf.lex_curr_p in
+      lexbuf.lex_curr_p <- { pos with pos_bol  = pos.pos_bol  + 1;
+                                      pos_cnum = pos.pos_cnum + 1 }; EOF }
   | _ as c { err (Illegal_character c) (Loc.of_lexbuf lexbuf) }
 
 and comment file_name = parse

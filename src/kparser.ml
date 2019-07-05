@@ -6,9 +6,8 @@ open Iast
 open Formula
 open Lib
 
-module Lex = Klexer.Make (Token)
-(* module Gram = Camlp4.Struct.Grammar.Static.Make (Lex) *)
-module Gram = Camlp4.PreCast.MakeGram (Lex)
+module Lex = Klexer.Make(Token)
+module Gram = Camlp4.Struct.Grammar.Static.Make(Lex)
 
 (* compute the position by adding the location return by camlp4 *)
 let get_pos l =
@@ -35,20 +34,16 @@ let peek_bvar =
        | [ID _,_; MOD,_] -> raise Stream.Failure
        | _ -> ())
 
-let program = Gram.Entry.mk "program" ;;
-
-let prop = Gram.Entry.mk "prop" ;;
+let program = Gram.Entry.mk "program"
 
 EXTEND Gram
-  GLOBAL: program prop;
-
-  prop:
-    [[ e = kat_expr; `EOF -> e ]];
+GLOBAL: program;
 
   program:
     [[ procs = LIST0 proc_decl; `EOF ->
        mk_prog procs
      ]];
+
 
   proc_decl:
     [[ proc = proc_sig; body = OPT block_stmt ->
@@ -119,16 +114,12 @@ EXTEND Gram
       [ s = block_stmt -> s ]
     | [ s = selection_stmt -> s
       | s = iteration_stmt -> s
-      | s = atomic_stmt; `SEMICOLON -> s
+      | s = assert_stmt; `SEMICOLON -> s
+      | s = expression_stmt; `SEMICOLON -> s
+      | s = jump_stmt; `SEMICOLON -> s
+      | s = skip_stmt; `SEMICOLON -> s
       ]
     ];
-
-atomic_stmt:
-  [[ s = assert_stmt -> s
-   | s = expression_stmt -> s
-   | s = jump_stmt -> s
-   | s = skip_stmt -> s
-   ]];
 
   selection_stmt:
     [[ s = if_stmt -> s ]];
@@ -346,105 +337,9 @@ atomic_stmt:
      | `FLOAT -> TFloat
      | `BOOL -> TBool
      ]];
-
-  kat_expr:
-    [[ e = kat_pls_expr -> e ]];
-
-  kat_pls_expr:
-    [[ e1 = kat_pls_expr; `PLUS; e2 = kat_dot_expr -> Pls (e1, e2)
-     | e = kat_dot_expr -> e
-     ]];
-
-  kat_dot_expr:
-    [[ e1 = kat_dot_expr; `DOT; e2 = kat_str_expr -> Dot (e1, e2)
-     | e = kat_str_expr -> e
-     ]];
-
-  kat_str_expr:
-    [[ e = kat_atom_expr; `MULT -> Str e
-     | e = kat_atom_expr -> e
-     ]];
-
-  kat_atom_expr:
-    [[ `TOP -> Tst Top
-     | `BOT -> Tst Bot
-     | `OSQUARE; s = logical_formula; `CSQUARE -> Tst (Prd s)
-     | `NOT; t = kat_atom_test -> Tst (Neg t)
-     | `OBRACE; s = atomic_stmt; `CBRACE -> KVar s
-     | `OPAREN; e = kat_expr; `CPAREN -> e
-     | `ANY -> Any
-     ]];
-
-  kat_test:
-    [[ e = kat_dsj_test -> e ]];
-
-  kat_dsj_test:
-    [[ e1 = kat_dsj_test; `PLUS; e2 = kat_cnj_test -> Dsj (e1, e2)
-     | e = kat_cnj_test -> e
-     ]];
-
-  kat_cnj_test:
-    [[ e1 = kat_cnj_test; `DOT; e2 = kat_atom_test -> Cnj (e1, e2)
-     | e = kat_atom_test -> e
-     ]];
-
-  kat_atom_test:
-    [[ `TOP -> Top
-     | `BOT -> Bot
-     | `OSQUARE; s = logical_formula; `CSQUARE -> Prd s
-     | `NOT; t = kat_atom_test -> Neg t
-     | `OPAREN; e = kat_test; `CPAREN -> e
-     ]];
-
-  (* kat_expr:
-   *   [ "pls_expr"
-   *       [ e1 = SELF; `PLUS; e2 = SELF -> Pls (e1, e2) ]
-   *   | "dot_expr"
-   *       [ e1 = SELF; `DOT; e2 = SELF -> Dot (e1, e2) ]
-   *   | "str_expr"
-   *       [ e = SELF; `STAR -> Str e ]
-   *   | "atom_expr"
-   *       [ `TOP -> Tst Top
-   *       | `BOT -> Tst Bot
-   *       | `OSQUARE; s = logical_formula; `CSQUARE -> Tst (Prd s)
-   *       | `NOT; t = kat_test -> Tst (Neg t) 
-   *       | `OBRACE; s = atomic_stmt; `CBRACE -> KVar s
-   *       | `OPAREN; e = SELF; `CPAREN -> e ]
-   *   ];
-   * 
-   *  kat_test:
-   *   [ "dsj_test"
-   *       [ e1 = SELF; `OR; e2 = SELF -> Dsj (e1, e2) ]
-   *   | "cnj_test"
-   *       [ e1 = SELF; `AND; e2 = SELF -> Cnj (e1, e2)
-   *       | e1 = SELF; e2 = SELF -> Cnj (e1, e2) ]
-   *   | "neg_test"
-   *       [ `NOT; e = SELF -> Neg e ]
-   *   | "atom_test"
-   *       [ `OSQUARE; s = logical_formula; `CSQUARE -> Prd s
-   *       | `TOP -> Top
-   *       | `BOT -> Bot
-   *       | `OPAREN; e = SELF; `CPAREN -> e ]
-   *   ]; *)
 END;;
 
 (* parsing commands *)
-
-let parse_prop prop_str =
-  try
-    (* let inchan = open_in !file_kat_prop in
-     * let kexpr = Gram.parse prop (PreCast.Loc.mk "prop") (Stream.of_channel inchan) in *)
-    let kexpr = Gram.parse_string prop (PreCast.Loc.mk "prop") !raw_kat_prop in
-    kexpr
-  with
-  | Lex.Loc.Exc_located (l, t) ->
-    let pos = get_pos l in
-    let filename = pos.pos_begin.Lexing.pos_fname in
-    let location = pr_pos pos in
-    let spos = "Location: File: " ^ filename ^ ". Line/Column: " ^ location in
-    let msg = "Message: " ^ (pr_exn t) in
-    error ("Syntax error!\n" ^ msg ^ "\n" ^ spos)
-  | e -> raise e
 
 let parse_program name body =
   try
@@ -459,52 +354,3 @@ let parse_program name body =
     let msg = "Message: " ^ (pr_exn t) in
     error ("Syntax error!\n" ^ msg ^ "\n" ^ spos)
   | e -> raise e
-
-let parse_one_file (file: string): prog_decl =
-  let () = input_file_name := file in
-  let inchan =
-    try open_in file
-    with e -> error ("Unable to open file: " ^ file) in
-  let iprog =
-    try parse_program file (Stream.of_channel inchan)
-    with
-    | Not_found -> error ("File not found: " ^ file)
-    | End_of_file -> error ("Unable to parse file: " ^ file)
-    | Lex.Loc.Exc_located (l, t) -> raise t in
-  let () = close_in inchan in
-  let () = if !print_prog_iast then (
-      let program =
-        "============================================\n" ^
-        "=========      Parsed Program      =========\n" ^
-        "============================================\n\n" ^
-        (pr_prog ~pr_paren:true iprog) ^ "\n\n" in
-      print_endline program) in
-
-  (* let cfg_prog = I.trans_cfg_prog_decl iprog in
-   * let flatten_cfg_prog = I.flatten_prog_decl cfg_prog in
-   * let () = if !print_prog_iast then (
-   *   let program =
-   *     "=============================================\n" ^
-   *     "=========      Flatten Program      =========\n" ^
-   *     "=============================================\n\n" ^
-   *     (String.concat "\n\n"
-   *        (List.map (fun (name, stmt_lst) ->
-   *             name ^ "\n\t" ^
-   *             (String.concat "\n\t" (List.map I.pr_stmt stmt_lst))
-   *           ) flatten_cfg_prog)) ^ "\n\n" in
-   *   print_endline program) in
-   * let cfg_lst = List.map (fun (name, stmt_lst) ->
-   *     (name, Cfg.trans_cfg stmt_lst)) flatten_cfg_prog in
-   * let () = if !print_prog_iast then (
-   *   let program =
-   *     "=================================\n" ^
-   *     "=========      CFG      =========\n" ^
-   *     "=================================\n\n" ^
-   *     (String.concat "\n\n"
-   *        (List.map (fun (name, cfg) ->
-   *             name ^ "\n\t" ^ (Cfg.CFG.print cfg)
-   *           ) cfg_lst)) ^ "\n\n" in
-   *   print_endline program) in
-   * let kat1s = List.map (fun (name, cfg) ->
-   *     KI.kat_interp (Iface.mk_true ()) cfg) cfg_lst in *)
-  iprog

@@ -2,7 +2,6 @@ open Spl_syn
 open PSpl_syn
 open Apron.Texpr1
 open Lib.Print
-open Globals
 
 (* Normalization *)
 let norm_neg_e (exp: cons): cons =
@@ -57,10 +56,6 @@ let pr_var = pr_to_string print_var
 let pr_typ = pr_to_string print_typ
 
 let pr_point = pr_to_string print_point
-
-let pr_typcons = pr_to_string print_typcons
-
-let pr_apron_coeff = pr_to_string Apron.Coeff.print
 
 let pr_iexpr = pr_to_string print_iexpr
 
@@ -223,33 +218,6 @@ and eq_block blk1 blk2 =
     List.for_all2 eq_instr blk1.instrs blk2.instrs
   with _ -> false
 
-let typ_of_scalar (s: Apron.Scalar.t) =
-  match s with
-  | Float _
-  | Mpfrf _ -> REAL
-  | Mpqf _ -> INT
-
-let typ_of_apron_typ (t: Apron.Texpr1.typ) =
-  match t with
-  | Int -> INT
-  | _ -> REAL
-
-let typ_of_iexpr
-    (symtab: (string * declaration) list)
-    (ie: iexpr): Spl_syn.typ =
-  match ie with
-  | Apron.Texpr1.Cst c ->
-    (match c with
-     | Apron.Coeff.Scalar s -> typ_of_scalar s
-     | Apron.Coeff.Interval i -> typ_of_scalar i.inf)
-  | Apron.Texpr1.Unop (_, _, ty, _) -> typ_of_apron_typ ty
-  | Apron.Texpr1.Binop (_, _, _, ty, _) -> typ_of_apron_typ ty
-  | Apron.Texpr1.Var v ->
-    let vname = Apron.Var.to_string v in
-    (match List.assoc_opt vname symtab with
-     | None -> error ("typ_of_iexpr: " ^ vname ^ " is not declared.")
-     | Some (_, ty) -> ty)
-
 let find_proc (prog: program) (pname: string): procedure =
   List.find (fun proc -> String.equal proc.pname pname) prog.procedures
 
@@ -289,8 +257,8 @@ let remove_call_stmt (proc: procedure) (pname: string): procedure =
 
 let pr_stats (prog: program) : string =
   let numprocs = List.fold_left (fun acc _ -> acc + 1) 0 (prog.procedures) in
-  ("{ procs=" ^ (string_of_int (numprocs-2)) ^ " }")  
-
+  ("{procs=" ^ (string_of_int (numprocs-2)) ^ "}")  
+    
 module HElem =
 struct
   type t =

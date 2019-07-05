@@ -195,22 +195,6 @@ and assign_op =
   | OpDivAssign
   | OpModAssign
 
-type kat_itest =
-  | Dsj of kat_itest * kat_itest
-  | Cnj of kat_itest * kat_itest
-  | Neg of kat_itest
-  | Top
-  | Bot
-  | Prd of F.formula
-
-type kat_iexpr =
-  | Pls of kat_iexpr * kat_iexpr
-  | Dot of kat_iexpr * kat_iexpr
-  | Str of kat_iexpr
-  | Tst of kat_itest
-  | KVar of statement
-  | Any
-
 let pos_of_stmt = function
   | Assert s -> s.stmt_assert_assume_pos
   | Assume s -> s.stmt_assert_assume_pos
@@ -445,7 +429,7 @@ and pr_var_decl_stmt ?(pr_paren=false) s =
   (pr_typ s.stmt_var_decl_type) ^ " " ^
   (String.concat ", " (List.map (fun (id, v, _) ->
        id ^ (match v with
-           | Some i -> " = " ^ (pr_stmt ~pr_paren:pr_paren i)
+           | Some i -> pr_stmt ~pr_paren:pr_paren i
            | _ -> "")) s.stmt_var_decl_lst))
 
 and pr_assign_stmt ?(pr_paren=false) s =
@@ -537,22 +521,6 @@ and pr_assign_op = function
   | OpMultAssign -> "*="
   | OpDivAssign -> "/="
   | OpModAssign -> "%="
-
-and pr_kat_itest ?(pr_paren=false) = function
-  | Dsj (e1, e2) -> "(" ^ (pr_kat_itest e1) ^ " | " ^ (pr_kat_itest e2) ^ ")"
-  | Cnj (e1, e2) -> "(" ^ (pr_kat_itest e1) ^ " & " ^ (pr_kat_itest e2) ^ ")"
-  | Neg e -> "!" ^ (pr_kat_itest e)
-  | Top -> "T"
-  | Bot -> "B"
-  | Prd e -> "[" ^ (F.pr_formula ~pr_paren:pr_paren e) ^ "]"
-
-and pr_kat_iexpr ?(pr_paren=false) = function
-  | Pls (e1, e2) -> "(" ^ (pr_kat_iexpr e1) ^ " + " ^ (pr_kat_iexpr e2) ^ ")"
-  | Dot (e1, e2) -> "(" ^ (pr_kat_iexpr e1) ^ "." ^ (pr_kat_iexpr e2) ^ ")"
-  | Str e -> (pr_kat_iexpr e) ^ "*"
-  | Tst t -> pr_kat_itest t
-  | KVar s -> "{" ^ (pr_stmt ~pr_paren:pr_paren s) ^ "}"
-  | Any -> "Any"
 
 let fop_of_stmt_bin_op op =
   match op with

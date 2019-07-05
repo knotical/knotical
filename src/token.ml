@@ -19,8 +19,7 @@ type token =
   | WHILE | CIF | CELSE
   | BREAK | CONTINUE | RETURN | GOTO | SKIP
   | ASSERT | ASSUME
-  | TOP | BOT | ANY
-  | EOF | EOL
+  | EOF
 
 
 module type KnoticalToken = Camlp4.Sig.Token with type t = token
@@ -55,9 +54,7 @@ module Token = struct
     | BREAK -> "break" | CONTINUE -> "continue"
     | RETURN -> "return" | GOTO -> "goto" | SKIP -> "skip"
     | ASSERT -> "assert" | ASSUME -> "assume"
-    | TOP -> "1" | BOT -> "0" | ANY -> "?"
     | EOF -> "EOF"
-    | EOL -> "EOL"
 
   let print ppf x = pp_print_string ppf (to_string x)
 

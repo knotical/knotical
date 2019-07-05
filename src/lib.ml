@@ -177,10 +177,7 @@ module List = struct
 
   let count (f: 'a -> bool) (xs : 'a list) : int =
     List.fold_left (fun acc x ->
-        if (f x) then acc + 1 else acc ) 0 xs
-
-  let cartesian_product (xs: 'a list) (ys: 'b list): ('a * 'b) list =
-    List.map (fun x -> List.map (fun y -> (x, y)) ys) xs |> List.concat
+      if (f x) then acc + 1 else acc ) 0 xs
 
 end;;
 
@@ -222,10 +219,10 @@ module Print = struct
   let rec pr_space_tex l =
     if (l <= 0) then ""
     else ("\\;\\;" ^ (pr_space_tex (l-1)))
-
+      
   let pr_indent_tex indent =
     ((pr_space_tex (indent * 2)) ^ "\\bullet\\ ")
-
+      
   let eq_s x y = String.compare x y = 0
 
   let pr_list ?(sep=", ") ?(obrace="") ?(cbrace="")

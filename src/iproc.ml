@@ -43,13 +43,11 @@ let mk_spl_iexpr_random (): S.iexpr =
   Apron.Texpr1.Cst (Apron.Coeff.i_of_float neg_infinity infinity)
 
 let mk_spl_iexpr_binop (bop: Apron.Texpr1.binop)
-    (typ: Apron.Texpr1.typ) (left: S.iexpr) (right: S.iexpr)
+    (left: S.iexpr) (right: S.iexpr)
   : S.iexpr =
-  Apron.Texpr1.Binop (bop, left, right, typ, Apron.Texpr1.Rnd)
-
-let mk_spl_block_of_instruction (pt: S.point) (instr: S.instruction): S.block =
-  { S.bpoint = pt;
-    S.instrs = [ { S.instruction = instr; S.ipoint = pt } ]; }
+  Apron.Texpr1.Binop (bop, left, right,
+                      Apron.Texpr1.Int,
+                      Apron.Texpr1.Rnd)
 
 (* Translation to Interproc's Spl *)
 let spl_of_pos (loc: pos): S.point =
@@ -64,18 +62,6 @@ let spl_of_typ (t: typ): S.typ =
   | TFloat -> S.REAL
   | _ -> warning_unexpected "spl_of_typ" pr_typ t
 
-let apron_typ_of_typ (t: typ): Apron.Texpr1.typ =
-  match t with
-  | TInt -> Apron.Texpr1.Int
-  | TFloat -> Apron.Texpr1.Real
-  | _ -> warning_unexpected "apron_typ_of_typ" pr_typ t
-
-let typ_of_apron_typ (t: Apron.Texpr1.typ): typ =
-  match t with
-  | Apron.Texpr1.Int -> TInt
-  | Apron.Texpr1.Real -> TFloat
-  | _ -> warning_unexpected "typ_of_apron_typ" Apron.Texpr1.string_of_typ t
-
 let spl_constyp_of_bin_rel (brel: F.bin_rel): S.constyp =
   match brel with
   | F.Eq -> S.EQ
@@ -85,15 +71,6 @@ let spl_constyp_of_bin_rel (brel: F.bin_rel): S.constyp =
   | F.Lt -> S.LT
   | F.Le -> S.LEQ
 
-let bin_rel_of_spl_constyp (srel: S.constyp): F.bin_rel  =
-  match srel with
-  | S.EQ -> F.Eq
-  | S.NEQ -> F.Ne
-  | S.GT -> F.Gt
-  | S.GEQ -> F.Ge
-  | S.LT -> F.Lt
-  | S.LEQ -> F.Le
-
 let apron_binop_of_bin_op (bop: F.bin_op): Apron.Texpr1.binop =
   match bop with
   | F.Add -> Apron.Texpr1.Add
@@ -102,83 +79,19 @@ let apron_binop_of_bin_op (bop: F.bin_op): Apron.Texpr1.binop =
   | F.Div -> Apron.Texpr1.Div
   | F.Mod -> Apron.Texpr1.Mod
 
-let bin_op_of_apron_binop (sop: Apron.Texpr1.binop): F.bin_op =
-  match sop with
-  | Apron.Texpr1.Add -> F.Add
-  | Apron.Texpr1.Sub -> F.Sub
-  | Apron.Texpr1.Mul -> F.Mul
-  | Apron.Texpr1.Div -> F.Div
-  | Apron.Texpr1.Mod -> F.Mod
-  | _ ->
-    warning_unexpected "bin_op_of_apron_binop"
-      Apron.Texpr1.string_of_binop sop
-
-let spl_iexpr_of_exp (e: F.exp): S.iexpr =
-  let rec helper e =
-    match e with
-    | F.Var ((v, typ), _) ->
-      mk_spl_iexpr_var v, apron_typ_of_typ typ
-    | F.IConst (v, _) ->
-      mk_spl_iexpr_const (mk_apron_scalar_int v),
-      apron_typ_of_typ TInt
-    | F.FConst (v, _) ->
-      mk_spl_iexpr_const (mk_apron_scalar_float v),
-      apron_typ_of_typ TFloat
-    | F.BinOp (bop, l, r, _) ->
-      let sl, typl = helper l in
-      let sr, typr = helper r in
-      let typ =
-        match typl, typr with
-        | Apron.Texpr1.Int, Apron.Texpr1.Int -> Apron.Texpr1.Int
-        | _ -> Apron.Texpr1.Real
-      in
-      mk_spl_iexpr_binop (apron_binop_of_bin_op bop) typ sl sr, typ
-    | _ -> warning_unexpected "spl_iexpr_of_exp" F.pr_exp e
-  in
-  fst (helper e)
-
-let exp_of_spl_iexpr
-    ?(symtab=Hashtbl.create 10)
-    (e: S.iexpr): F.exp =
-  let rec helper t e =
-    match e with
-    | Apron.Texpr1.Var v ->
-      let v_name = Apron.Var.to_string v in
-      let latest_v =
-        match Hashtbl.find_opt symtab v_name with
-        | None ->
-          let fresh_id = 0 in
-          let () = Hashtbl.add symtab v_name fresh_id in
-          v_name ^ (string_of_int fresh_id)
-        | Some id -> v_name ^ (string_of_int id)
-      in
-      F.mk_evar (latest_v, typ_of_apron_typ t) no_pos
-    | Apron.Texpr1.Cst c ->
-      (match c with
-       | Apron.Coeff.Scalar s ->
-         (match s with
-          | Float f -> F.mk_fconst f no_pos
-          | Mpqf i -> F.mk_iconst (int_of_float (Mpqf.to_float i)) no_pos
-          | Mpfrf f -> F.mk_fconst (Mpfrf.to_float f) no_pos)
-       | _ -> warning_unexpected "exp_of_spl_iexpr" SU.pr_apron_coeff c)
-    | Apron.Texpr1.Binop (op, l, r, ty, _) ->
-      let fl = helper ty l in
-      let fr = helper ty r in
-      F.mk_bin_exp (bin_op_of_apron_binop op) fl fr no_pos
-    | _ -> warning_unexpected "exp_of_spl_iexpr" SU.pr_iexpr e
-  in
-  helper Apron.Texpr1.Int e
+let rec spl_iexpr_of_exp (e: F.exp): S.iexpr =
+  match e with
+  | F.Var ((v, _), _) -> mk_spl_iexpr_var v
+  | F.IConst (v, _) -> mk_spl_iexpr_const (mk_apron_scalar_int v)
+  | F.FConst (v, _) -> mk_spl_iexpr_const (mk_apron_scalar_float v)
+  | F.BinOp (bop, l, r, _) ->
+    let sl = spl_iexpr_of_exp l in
+    let sr = spl_iexpr_of_exp r in
+    mk_spl_iexpr_binop (apron_binop_of_bin_op bop) sl sr
+  | _ -> warning_unexpected "spl_iexpr_of_exp" F.pr_exp e
 
 let spl_cons_of_binrel (brel: F.bin_rel) (l: F.exp) (r: F.exp): S.cons =
   (spl_iexpr_of_exp l, spl_constyp_of_bin_rel brel, spl_iexpr_of_exp r)
-
-let binrel_of_spl_cons
-    ?(symtab=Hashtbl.create 10)
-    (c: S.cons): F.formula =
-  let (l, op, r) = c in
-  F.mk_bin_rel (bin_rel_of_spl_constyp op)
-    (exp_of_spl_iexpr ~symtab:symtab l)
-    (exp_of_spl_iexpr ~symtab:symtab r) no_pos
 
 let rec spl_bexpr_of_formula (form: F.formula): S.bexpr =
   match form with
@@ -189,57 +102,6 @@ let rec spl_bexpr_of_formula (form: F.formula): S.bexpr =
   | F.Disj (l, r, _) -> S.OR (spl_bexpr_of_formula l, spl_bexpr_of_formula r)
   | _ -> warning_unexpected "spl_bexpr_of_formula" F.pr_formula form
 
-let formula_of_spl_bexpr
-    ?(symtab=Hashtbl.create 10)
-    (e: S.bexpr): F.formula =
-  let rec helper e =
-    match e with
-    | S.TRUE -> F.mk_bconst true no_pos
-    | S.FALSE -> F.mk_bconst false no_pos
-    | S.CONS c -> binrel_of_spl_cons ~symtab:symtab c
-    | S.AND (l, r) ->
-      F.mk_conj (helper l) (helper r) no_pos
-    | S.OR (l, r) ->
-      F.mk_disj (helper l) (helper r) no_pos
-    | S.NOT ne -> F.mk_neg (helper ne) no_pos
-    | _ -> warning_unexpected "formula_of_spl_bexpr" SU.pr_bexpr e
-  in helper e
-
-let formula_of_spl_instruction
-    ?(symtab=Hashtbl.create 10)
-    (instr: S.instruction): F.formula =
-  let incr_id vname =
-    match Hashtbl.find_opt symtab vname with
-    | None -> Hashtbl.add symtab vname 0; 0
-    | Some id -> Hashtbl.replace symtab vname (id + 1); id + 1
-  in
-  let rec helper instr =
-    match instr with
-    | S.SKIP
-    | S.HALT
-    | S.FAIL -> F.mk_true ()
-    | S.ASSUME c -> formula_of_spl_bexpr ~symtab:symtab c
-    | S.ASSIGN (v, e) ->
-      let f_e = exp_of_spl_iexpr ~symtab:symtab e in
-      let vname = Apron.Var.to_string v in
-      let latest_v_id = incr_id vname in
-      F.mk_bin_rel F.Eq
-        (F.mk_evar (vname ^ (string_of_int latest_v_id), TInt) no_pos)
-        f_e
-        no_pos
-    | S.CALL (vs, _, _) ->
-      let () =
-        (match vs with
-         | [] -> ()
-         | _ -> List.iter (fun v ->
-             let _ = incr_id (Apron.Var.to_string v) in
-             ()) vs
-        ) in
-      F.mk_true ()
-    | _ -> warning_unexpected "formula_of_spl_instruction" SU.pr_instruction instr
-  in
-  helper instr
-
 let spl_var_of_stmt (stmt: I.statement): S.var =
   match stmt with
   | I.Var s -> mk_spl_var s.I.stmt_var_name
@@ -249,12 +111,6 @@ let rec spl_instruction_of_stmt (stmt: I.statement): S.instruction =
   match stmt with
   | I.Skip s -> S.SKIP
   | I.Assume s -> S.ASSUME (spl_bexpr_of_formula s.I.stmt_assert_assume_condition)
-  | I.Assert s ->
-    let pt = spl_of_pos (I.pos_of_stmt stmt) in
-    let cond = spl_bexpr_of_formula s.I.stmt_assert_assume_condition in
-    let skip_block = mk_spl_block_of_instruction pt S.SKIP in
-    let fail_block = mk_spl_block_of_instruction pt S.FAIL in
-    S.IFELSE (cond, skip_block, fail_block)
   | I.Assign s ->
     let v = mk_spl_var s.I.stmt_assign_left in
      (try
@@ -269,7 +125,7 @@ let rec spl_instruction_of_stmt (stmt: I.statement): S.instruction =
          | I.Nondet r ->
            let exp = mk_spl_iexpr_random () in
            S.ASSIGN (v, exp)
-         | _ -> warning_unexpected "spl_instruction_of_stmt" I.pr_stmt stmt))
+         | _ -> warning_unexpected "spl_var_of_stmt" I.pr_stmt stmt))
   | I.Call s ->
     let input_args = List.map spl_var_of_stmt s.I.stmt_call_args in
     let output_args = [] in
@@ -297,7 +153,6 @@ and spl_instrs_of_stmt (stmt: I.statement): (S.declaration list * S.instr list) 
     let local_vars = s.I.stmt_block_local_vars in
     let local_decls = List.map (fun (v, t, _) -> (mk_spl_var v, spl_of_typ t)) local_vars in
     let decls_body, instrs_body = spl_instrs_of_stmt s.I.stmt_block_body in
-    (* TODO: To consider variable scope and name clashing problem *)
     (local_decls @ decls_body, instrs_body)
   | I.Seq s ->
     let decls_fst, instrs_fst = spl_instrs_of_stmt s.I.stmt_seq_fst in
@@ -363,33 +218,19 @@ let is_bottom_abs fp point =
    let man = Apron.Abstract1.manager abs in
    Apron.Abstract1.is_bottom man abs
 
-let is_infeasible_instr fp (i: S.instr) =
-  is_bottom_abs fp i.S.ipoint
-
-let is_infeasible_block fp (blk: S.block) =
-  try
-    let last_instr = List.nth blk.instrs ((List.length blk.instrs) - 1) in
-    is_infeasible_instr fp last_instr
-  with _ -> false
-
-let is_infeasible_proc fp (proc: S.procedure) =
-  is_infeasible_block fp proc.S.pcode
-
-let is_infeasible_prog fp (prog: S.program) =
-  try
-    let main_proc = List.find (fun proc ->
-        String.equal proc.S.pname spl_main_name) prog.procedures in
-    is_infeasible_proc fp main_proc
-  with _ -> false
-
-let analyze_and_print domain prog =
-  let () = Opt.domain := domain in
+let analyze_and_print prog =
   pr_to_string (fun fmt prog ->
       Frontend.analyze_and_display fmt prog) prog
 
 (* Parsing the program *)
-let parse lexbuf =
+let parse input_file =
+  let input = open_in input_file in
+  let lexbuf = Lexing.from_channel input in
+  lexbuf.Lexing.lex_curr_p <- { lexbuf.Lexing.lex_curr_p with
+                                Lexing.pos_fname = "file " ^ (input_file);
+                              };
   let prog = Frontend.parse_lexbuf Format.err_formatter lexbuf in
+  close_in input;
 
   if !Opt.debug > 0 then
     printf "%sProgram with its control points:%s@.%a@."
@@ -405,30 +246,10 @@ let parse lexbuf =
   ;
   prog
 
-let parse_input_file input_file =
-  let input = open_in input_file in
-  let lexbuf = Lexing.from_channel input in
-  lexbuf.Lexing.lex_curr_p <- { lexbuf.Lexing.lex_curr_p with
-                                Lexing.pos_fname = "file " ^ (input_file); };
-  let prog = parse lexbuf in
-  close_in input;
-  prog
-
-let parse_string str =
-  let lexbuf = Lexing.from_string str in
-  lexbuf.Lexing.lex_curr_p <- { lexbuf.Lexing.lex_curr_p with
-                                Lexing.pos_fname = "string"; };
-  let prog = parse lexbuf in
-  prog
-
 let analyze_from_source input_file =
-  let prog = parse_input_file input_file in
+  let prog = parse input_file in
   (* Computing solution *)
-  Debug.hprint "Analysis result:\n" (analyze_and_print !Opt.domain) prog
-
-let analyze_from_string sprog =
-  let prog = parse_string sprog in
-  Debug.hprint "Analysis result:\n" (analyze_and_print !Opt.domain) prog
+  Debug.hprint "Analyzed program" analyze_and_print prog
 
 let analyze_forward
     (man: 'a Apron.Manager.t)

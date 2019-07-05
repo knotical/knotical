@@ -30,19 +30,11 @@ let interproc_source_file = ref ""
 let kat_source_file = ref ""
 let symkat_x = ref ""
 let symkat_y = ref ""
-let raw_kat_formula = ref ""
-let ked_enabled = ref false
 let fst_cmp_method = ref ""
 let snd_cmp_method = ref ""
 let refinement_op = ref REq
 let compare_mode_enabled = ref false
 let (no_removed_events: string list ref) = ref []
-
-(* Temper *)
-let compute_intersect = ref false
-let use_diff_sym = ref false
-let raw_kat_prop = ref ""
-let file_kat_prop = ref ""
 
 (* printing *)
 let print_prover_stats = ref false

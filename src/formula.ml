@@ -38,42 +38,37 @@ and bin_op =
   | Mod
 
 let mk_true () =
-  BConst (true, no_pos)
+  BConst(true, no_pos)
 
 let mk_conj left right loc =
-  match left, right with
-  | BConst (true, _), _
-  | _, BConst (false, _) -> right
-  | _, BConst (true, _)
-  | BConst (false, _), _ -> left
-  | _ -> Conj (left, right, loc)
+  Conj(left, right, loc)
 
 let mk_disj left right loc =
-  Disj (left, right, loc)
+  Disj(left, right, loc)
 
 let mk_neg f loc =
-  Neg (f, loc)
+  Neg(f, loc)
 
 let mk_bin_rel op left right loc =
-  BinRel (op, left, right, loc)
+  BinRel(op, left, right, loc)
 
 let mk_bin_exp op left right loc =
-  BinOp (op, left, right, loc)
+  BinOp(op, left, right, loc)
 
 let mk_iconst v loc =
-  IConst (v, loc)
+  IConst(v, loc)
 
 let mk_fconst v loc =
-  FConst (v, loc)
+  FConst(v, loc)
 
 let mk_bconst v loc =
-  BConst (v, loc)
+  BConst(v, loc)
 
 let mk_bvar v loc =
-  BVar (v, loc)
+  BVar(v, loc)
 
 let mk_evar v loc =
-  Var (v, loc)
+  Var(v, loc)
 
 let pr_bin_rel = function
   | Lt -> "<"
@@ -123,17 +118,9 @@ let rec pr_formula ?(pr_paren=false) f =
   | Forall (v, f, _) -> "forall " ^ (pr_var v) ^ ". (" ^ (pr_formula f) ^ ")"
   | Exists (v, f, _) -> "exists " ^ (pr_var v) ^ ". (" ^ (pr_formula f) ^ ")"
 
-let pos_of_formula = function
-  | BVar (_, p)
-  | BConst (_, p)
-  | BinRel (_, _, _, p)
-  | Neg (_, p)
-  | Conj (_, _, p)
-  | Disj (_, _, p)
-  | Forall (_, _, p)
-  | Exists (_, _, p) -> p
 
-(* norm_neg, e.g. !(p | q ) -> !p & !q  *)
+
+  (*norm_neg, e.g. !(p | q ) -> !p & !q  *)
 
 let rec norm_neg func =
     match func with
@@ -170,4 +157,4 @@ let rec norm_neg func =
             Disj (norm_f1, norm_f2, p1)
     | Forall (v, f, p1) -> Forall (v, norm_neg f, p1)
     | Exists (v, f, p1) -> Exists (v, norm_neg f, p1)
-
+            
