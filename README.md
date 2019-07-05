@@ -6,13 +6,13 @@
 
 1. Install Docker. Follow the instructions on https://docs.docker.com/install/.
 
-1. Build the Knotical image.
+1. Build the Knotical image:
 
     ```
     docker build -t knotical .
     ```
 
-1. Run the Knotical image.
+1. Run the Knotical image:
 
     ```
     docker run -it knotical bash
@@ -20,7 +20,7 @@
     
 ### Installation on Ubuntu from scratch
 
-1. Install Prerequisites
+1. Install Prerequisites:
 
     ```
     apt-get clean
@@ -28,7 +28,7 @@
     apt-get install -qy libppl-dev libmpfr-dev m4 opam subversion
     ```
     
- 1. Install OCaml compiler and Dependencies via opam
+ 1. Install OCaml compiler and Dependencies via `opam`:
  
     ```
     opam init
@@ -39,7 +39,7 @@
     eval `opam config env`
     ```
     
-1. Install Fixpoint
+1. Install `Fixpoint`:
   
     ```
     svn checkout https://scm.gforge.inria.fr/anonscm/svn/bjeannet/pkg/fixpoint/
@@ -49,9 +49,15 @@
     make install
     ```
 
-1. Compile Knotical
+1. Compile Knotical:
    
     ```
     oasis setup
     make
     ```
+    
+## Step by Step Instructions
+
+### Running a single example
+
+### Running the benchmarks
