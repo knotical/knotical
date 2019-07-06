@@ -75,7 +75,7 @@ foreach my $b (sort @bench) {
     # Size=1, NAxioms=5
 
     my $stats = qx{grep " Statistics: " $RESULTSDIR/kn-$b.txt};
-    $stats =~ s/^.* Statistics: {(.*)}\n$/$1/;
+    $stats =~ s/^.* Statistics: \{(.*)\}\n$/$1/;
     my %stats_kv = map { split('=',$_) } split(',', $stats);
     my $expect = qx{grep "NO SOLUTION" bench/$b};
     $expect = ($expect eq '' ? '\\EVsome' : '\\EVnone');
