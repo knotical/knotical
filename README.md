@@ -20,6 +20,8 @@
     
 ### Installation on Ubuntu from scratch
 
+NOTE: The following instructions have been tested on Ubuntu 18.04 LTS with opam 1.2.2.
+
 1. Install Prerequisites:
 
     ```
