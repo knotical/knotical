@@ -66,7 +66,7 @@
 
 ### Running a single example
 
-- For instance, the following command line runs the tool Knotical over the motivating example (`bench/01sendrecv.c`) to find trace refinement relations under which the first method `C2` *strictly refines* the second method `C1`, given that the methods `send`, `recv`, and `constructReply` aren't removed
+- For instance, the following command line runs the tool Knotical over the motivating example (`bench/01sendrecv.c`) to find trace refinement relations under which the first method `C2` *refines* the second method `C1`, given that the methods `send`, `recv`, and `constructReply` aren't removed
 
     ```
     ./knotical.native -cmpLt C2 C1 -no-rem send,recv,constructReply bench/01sendrecv.c
