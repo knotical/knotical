@@ -25,7 +25,7 @@
     ```
     apt-get clean
     apt-get update
-    apt-get install -qy libppl-dev libmpfr-dev m4 opam subversion
+    apt-get install -qy libppl-dev libmpfr-dev m4 opam subversion gawk
     ```
     
 2. Install OCaml compiler and Dependencies via `opam`:
