@@ -6,13 +6,13 @@
 
 1. Install Docker. Follow the instructions on https://docs.docker.com/install/.
 
-1. Build the Knotical image:
+2. Build the Knotical image:
 
     ```
     docker build -t knotical .
     ```
 
-1. Run the Knotical image:
+3. Run the Knotical image:
 
     ```
     docker run -it knotical bash
@@ -28,7 +28,7 @@
     apt-get install -qy libppl-dev libmpfr-dev m4 opam subversion
     ```
     
- 1. Install OCaml compiler and Dependencies via `opam`:
+2. Install OCaml compiler and Dependencies via `opam`:
  
     ```
     opam init
@@ -49,7 +49,7 @@
     make install
     ```
 
-1. Compile Knotical:
+3. Compile Knotical:
    
     ```
     oasis setup
@@ -66,7 +66,7 @@
 
 ### Running a single example
 
-- For instance, the following command line runs the tool Knotical over the motivating example (`bench/01sendrecv.c`) to find trace refinement relations under which the first method `C2` *refines* the second method `C1`, given that the methods `send`, `recv`, and `constructReply` aren't removed
+- For instance, the following command line runs the tool Knotical on the motivating example (`bench/01sendrecv.c`) to find trace refinement relations under which the first method `C2` *refines* the second method `C1`, given that the methods `send`, `recv`, and `constructReply` aren't removed
 
     ```
     ./knotical.native -cmpLt C2 C1 -no-rem send,recv,constructReply bench/01sendrecv.c
@@ -106,3 +106,11 @@
     The first refinement relation shows that when `log` are removed in both methods and the authorization `auth` in `C2` is always successful then `C2` *refines* `C1`.
 
 ### Running the benchmarks
+
+- To reproduce the entire experiment on the 37 benchmark programs in `bench`, run 
+
+    ```
+    bin/runAll.sh
+    ```
+
+- The experimental result is in the folder `results-YYYYMMDD-hhmmss` where `YYYYMMDD-hhmmss` is the timestamp when the script was run. The file `results-YYYYMMDD-hhmmss/SUMMARY.html` represents the summary result (Table 1 in the paper) in HTML format.
