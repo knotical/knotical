@@ -1,0 +1,27 @@
+FROM ubuntu:latest
+
+RUN \
+    apt-get update && \
+    apt-get upgrade -qy && \
+    apt-get install -qy software-properties-common gcc g++ make m4 subversion gawk && \
+    apt-get install -qy libppl-dev libmpfr-dev
+
+RUN \
+    add-apt-repository ppa:avsm/ppa && \
+    apt-get update && \
+    apt-get install -qy opam && \
+    opam init -y --disable-sandboxing && \
+    eval $(opam env) && \
+    opam switch create 4.06.1 && \
+    eval $(opam env) && \
+    opam install -y oasis ocamlbuild ocamlfind && \
+    opam install -y apron conf-ppl camllib safa batteries camlp4 core ocamlgraph && \
+    eval $(opam env)
+
+RUN \
+    eval $(opam env) && \
+    svn checkout https://scm.gforge.inria.fr/anonscm/svn/bjeannet/pkg/fixpoint/ && \
+    cd fixpoint/trunk/ && \
+    cp Makefile.config.model Makefile.config && \
+    make && \
+    make install
