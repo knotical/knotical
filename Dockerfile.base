@@ -25,3 +25,6 @@ RUN \
     cp Makefile.config.model Makefile.config && \
     make && \
     make install
+
+# docker build -t avta/knotical-core:opam_2_0 -f Dockerfile.base .
+# docker push avta/knotical-core:opam_2_0
