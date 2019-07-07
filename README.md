@@ -30,16 +30,23 @@ NOTE: The following instructions have been tested on Ubuntu 18.04 LTS with opam 
     apt-get install -qy libppl-dev libmpfr-dev m4 subversion gawk
     ```
     
-2. Install `opam` and the OCaml compiler:
-   
+2. Install `opam`:
+
     ```
     apt-get install opam
     opam init
+    ```
+    
+   You can follow the instructions on https://opam.ocaml.org/doc/Install.html to install the latest `opam` 2.0.4. You may need to install `gcc`, `g++`, and `make` before doing that.
+
+3. Install OCaml via `opam`:
+
+    ```
     opam switch 4.06.1
     eval `opam config env`
     ```
-    
-3. Install Dependencies via `opam`:
+
+4. Install Dependencies via `opam`:
  
     ```
     opam install oasis ocamlbuild
@@ -47,7 +54,7 @@ NOTE: The following instructions have been tested on Ubuntu 18.04 LTS with opam 
     eval `opam config env`
     ```
     
-4. Install `Fixpoint`:
+5. Install `Fixpoint` (http://pop-art.inrialpes.fr/people/bjeannet/bjeannet-forge/fixpoint/):
   
     ```
     svn checkout https://scm.gforge.inria.fr/anonscm/svn/bjeannet/pkg/fixpoint/
@@ -57,7 +64,7 @@ NOTE: The following instructions have been tested on Ubuntu 18.04 LTS with opam 
     make install
     ```
 
-5. Compile Knotical:
+6. Compile Knotical:
    
     ```
     oasis setup
