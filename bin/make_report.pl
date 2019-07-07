@@ -84,7 +84,8 @@ foreach my $b (sort @bench) {
     $cmplt = ($cmplt eq '' ? '\\EVcmp' : '\\EVclt');
     #my $C1 = qx{grep "C1:" $RESULTSDIR/kn-$b.html};
     #my $C2 = qx{grep "C2:" $RESULTSDIR/kn-$b.html};
-    my $loc = qx{wc -l bench/$b | cut -c 1-8};
+    # my $loc = qx{wc -l bench/$b | cut -c 1-8};
+    my $loc = qx{wc -l < bench/$b};
     $loc =~ s/[ \n]//g;
     chomp($C1); chomp($C2);
     #print EM "$b : RESULT : $URLBASE/results-$STAMP/kn-$b.html\n";

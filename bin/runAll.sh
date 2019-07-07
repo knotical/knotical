@@ -11,7 +11,7 @@ URLBASE="file://$bindir/.."
 
 # benchmarks
 cd $bindir/../bench
-EXAMPLES=$(ls *.c) # 00*.c 01*.c 02*.c) # 01sendrecv.c)
+EXAMPLES=$(ls 01sendrecv.c) # *.c) # 00*.c 01*.c 02*.c) # 01sendrecv.c)
 
 export STAMP=`date +'%Y%m%d-%H%M%S'`
 export RESULTSDIR=$bindir/../results-$STAMP
