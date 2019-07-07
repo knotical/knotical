@@ -30,7 +30,7 @@ NOTE: The following instructions have been tested on Ubuntu 18.04 LTS with opam 
     apt-get install -qy libppl-dev libmpfr-dev m4 subversion gawk
     ```
     
-2. Install `opam` and OCaml compiler:
+2. Install `opam` and the OCaml compiler:
    
     ```
     apt-get install opam
