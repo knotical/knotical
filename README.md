@@ -36,7 +36,7 @@ NOTE: The following instructions have been tested on **Ubuntu 18.04 LTS** with *
     ```
     apt-get clean
     apt-get update
-    apt-get install -qy libppl-dev libmpfr-dev m4 subversion gawk
+    apt-get install -qy libppl-dev libmpfr-dev m4 subversion gawk lynx
     ```
     
 2. Install `opam`:
@@ -84,7 +84,7 @@ NOTE: The following instructions have been tested on **Ubuntu 18.04 LTS** with *
 
 ### Knotical's command-line options
 
-- `-cmp` or `cmpLt`: Find the trace refinement relations of the two methods for equality (`cmp`) or refinement (`cmpLt`)
+- `-cmp` or `-cmpLt`: Find the trace refinement relations of the two methods for equality (`cmp`) or refinement (`cmpLt`)
 - `-no-rem`: Specify the list of events/methods that cannot be removed or replaced
 - `-depth`: Specify the depth of proof search
 
