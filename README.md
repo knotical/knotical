@@ -6,9 +6,9 @@
 
 To protect your credential, you can use the following command to clone the repo
 
-    ```
-    git clone git://github.com/knotical/knotical.git
-    ```
+```
+git clone git://github.com/knotical/knotical.git
+```
 
 ### Using Docker
 
