@@ -137,7 +137,7 @@ NOTE: The following instructions have been tested on **Ubuntu 18.04 LTS** with *
     bin/runAll.sh
     ```
 
-- The experimental result is in the folder `results-YYYYMMDD-hhmmss` where `YYYYMMDD-hhmmss` is the timestamp when the script was run. The file `results-YYYYMMDD-hhmmss/SUMMARY.html` represents the summary result (Table 1 in the paper) in HTML format. You can open the file `SUMMARY.html` using your preferred web browser. If you are running Knotical's Docker image, you can use `lynx` to open the file within the terminal.
+- The experimental result is in the folder `results-YYYYMMDD-hhmmss` where `YYYYMMDD-hhmmss` is the timestamp when the script was run. The file `results-YYYYMMDD-hhmmss/SUMMARY.html` represents the summary result (Table 1 in the paper) in HTML format. You can open the file `SUMMARY.html` using your preferred web browser. If you are running Knotical's Docker image, you can use `lynx` to view the file within the terminal.
 
     ```
     lynx results-YYYYMMDD-hhmmss/SUMMARY.html
