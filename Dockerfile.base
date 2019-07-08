@@ -3,7 +3,7 @@ FROM ubuntu:latest
 RUN \
     apt-get update && \
     apt-get upgrade -qy && \
-    apt-get install -qy software-properties-common gcc g++ make m4 subversion gawk && \
+    apt-get install -qy software-properties-common gcc g++ make m4 subversion gawk lynx && \
     apt-get install -qy libppl-dev libmpfr-dev
 
 RUN \
