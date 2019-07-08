@@ -67,5 +67,5 @@ echo ""
 # cat $RESULTSDIR/EMAIL.txt
 # cat $RESULTSDIR/RESULTS.tex
 echo ""
-echo "Output saved to: $RESULTSDIR"
+echo "Result saved to: $RESULTSDIR/SUMMARY.html"
 echo ""
