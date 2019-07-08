@@ -2,9 +2,17 @@
 
 ## Getting Started Guide
 
+### Clone the repo
+
+To protect your credential, you can use the following command to clone the repo
+
+    ```
+    git clone git://github.com/knotical/knotical.git
+    ```
+
 ### Using Docker
 
-1. Install Docker. Follow the instructions on https://docs.docker.com/install/.
+1. Install Docker. Follow the instructions on https://docs.docker.com/install/. You may need to run `docker` commands with `sudo` or similar privileges.
 
 2. Build the Knotical image:
 
@@ -20,7 +28,8 @@
     
 ### Installation on Ubuntu from scratch
 
-NOTE: The following instructions have been tested on Ubuntu 18.04 LTS with opam 1.2.2.
+NOTE: The following instructions have been tested on **Ubuntu 18.04 LTS** with **`opam` 1.2.2**. You may need to run `apt-get` commands with the `sudo` privilege.
+
 
 1. Install Prerequisites:
 
