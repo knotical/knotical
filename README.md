@@ -118,7 +118,7 @@ NOTE: The following instructions have been tested on Ubuntu 18.04 LTS with opam 
        ...
     ```
     
-    The first refinement relation shows that when `log` are removed in both methods and the authorization `auth` in `C2` is always successful then `C2` *refines* `C1`.
+    The first refinement relation shows that when `log` are removed in both methods (expressed by the axioms `I=1`, `J=1`, and `K=1`) and the authorization `auth` in `C2` is always successful (i.e., the case of `b_12` corresponding to the condition `auth > 0`) then `C2` *refines* `C1`.
 
 ### Running the benchmarks
 
