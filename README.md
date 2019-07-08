@@ -10,6 +10,8 @@ To protect your credential, you can use the following command to clone the repo
 git clone git://github.com/knotical/knotical.git
 ```
 
+or download the single zip file from the URL https://github.com/knotical/knotical/archive/v1.0.zip
+
 ### Using Docker
 
 1. Install Docker. Follow the instructions on https://docs.docker.com/install/. You may need to run `docker` commands with `sudo` or similar privileges.
