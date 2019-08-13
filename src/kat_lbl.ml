@@ -5,6 +5,7 @@ sig
   type t
 
   val string_of: t -> string
+  val texstring_of: t -> string
   val to_kat: t -> Kat.var
   val from_kat: Kat.var -> t
   val eq: t -> t -> bool
@@ -15,6 +16,7 @@ sig
   type t
 
   val string_of: t -> string
+  val texstring_of: t -> string
   val to_kat: t -> Bdd.key
   val from_kat: Bdd.key -> t
   val eq: t -> t -> bool
@@ -57,7 +59,7 @@ struct
     | Neg e -> "\\neg " ^ (pr_test_tex e)
     | Top -> "1"
     | Bot -> "0"
-    | Prd k -> K.string_of k
+    | Prd k -> K.texstring_of k
 
   let rec pr_expr (e: expr): string =
     match e with
