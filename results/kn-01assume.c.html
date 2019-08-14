@@ -5967,14 +5967,14 @@ Solution Stats: Size=2, NAxioms=7
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{19}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{19}\!\cdot\!U_{21})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{20}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6003,12 +6003,12 @@ Solution Stats: Size=2, NAxioms=7
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{19}\!\cdot\!U_{23})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{22}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6041,14 +6041,14 @@ Solution Stats: Size=2, NAxioms=7
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{24})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{26}\!\cdot\!U_{24})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{25})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6077,12 +6077,12 @@ Solution Stats: Size=2, NAxioms=7
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{28}\!\cdot\!U_{24})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{27})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6118,14 +6118,14 @@ Solution Stats: Size=2, NAxioms=9
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!I_{29}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!I_{29}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{30}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{29}\!\cdot\!U_{31})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{30}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!I_{29}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{30}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{30}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6149,9 +6149,9 @@ Solution Stats: Size=1, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!I_{29}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!I_{29}\!\cdot\!U_{32})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{30}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6182,12 +6182,12 @@ Solution Stats: Size=2, NAxioms=9
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!I_{29}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{33}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{29}\!\cdot\!U_{34})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{33}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!I_{29}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{33}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{33}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6207,7 +6207,7 @@ Solution Stats: Size=1, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 AComplete.
-TEX| .3 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!I_{29}\!\cdot\!U_{35})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{33}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6243,14 +6243,14 @@ Solution Stats: Size=2, NAxioms=9
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{36})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{36})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{37})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{38}\!\cdot\!U_{36})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{37})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{36})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{37})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{37})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6274,9 +6274,9 @@ Solution Stats: Size=1, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{36})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!I_{39}\!\cdot\!U_{36})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{37})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6308,12 +6308,12 @@ Solution Stats: Size=2, NAxioms=10
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{36})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{40})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{41}\!\cdot\!U_{36})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{40})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{36})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{40})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{17}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{42}\!\cdot\!U_{36})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{40})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6333,7 +6333,7 @@ Solution Stats: Size=1, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 AComplete.
-TEX| .3 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{17}\!\cdot\!(a_{5} \!\cdot\!I_{43}\!\cdot\!U_{36})*\!\cdot\!\neg a_{5} \\ k_2=E_{18}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{40})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6364,14 +6364,14 @@ Solution Stats: Size=2, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{44}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{46}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{45}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{44}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{46}\!\cdot\!U_{48})*\!\cdot\!\neg a_{5} \\ k_2=E_{45}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{47}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6398,12 +6398,12 @@ Solution Stats: Size=2, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{44}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{46}\!\cdot\!U_{50})*\!\cdot\!\neg a_{5} \\ k_2=E_{45}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{49}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, I=1, T=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6434,14 +6434,14 @@ Solution Stats: Size=2, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{44}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{51})*\!\cdot\!\neg a_{5} \\ k_2=E_{45}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{44}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{53}\!\cdot\!U_{51})*\!\cdot\!\neg a_{5} \\ k_2=E_{45}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{52})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6468,12 +6468,12 @@ Solution Stats: Size=2, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{44}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{55}\!\cdot\!U_{51})*\!\cdot\!\neg a_{5} \\ k_2=E_{45}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{54})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, U=1, T=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6504,14 +6504,14 @@ Solution Stats: Size=2, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{56}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{58}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{56}\!\cdot\!U_{60})*\!\cdot\!\neg a_{5} \\ k_2=E_{59}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{57}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6540,14 +6540,14 @@ Solution Stats: Size=2, NAxioms=3
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{56}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, U=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{56}\!\cdot\!U_{61})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{57}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, U=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6574,12 +6574,12 @@ Solution Stats: Size=2, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{64}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{56}\!\cdot\!U_{66})*\!\cdot\!\neg a_{5} \\ k_2=E_{65}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{63}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6604,12 +6604,12 @@ Solution Stats: Size=2, NAxioms=3
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, U=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{56}\!\cdot\!U_{67})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{63}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, U=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6640,14 +6640,14 @@ Solution Stats: Size=2, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{68})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{70}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{72}\!\cdot\!U_{68})*\!\cdot\!\neg a_{5} \\ k_2=E_{71}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{69})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6676,14 +6676,14 @@ Solution Stats: Size=2, NAxioms=3
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{68})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, I=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{73}\!\cdot\!U_{68})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{69})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, I=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6710,12 +6710,12 @@ Solution Stats: Size=2, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{76}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{78}\!\cdot\!U_{68})*\!\cdot\!\neg a_{5} \\ k_2=E_{77}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{75})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6740,12 +6740,12 @@ Solution Stats: Size=2, NAxioms=3
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, I=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{79}\!\cdot\!U_{68})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{75})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, I=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6781,14 +6781,14 @@ Solution Stats: Size=2, NAxioms=9
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{82}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{83}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{82}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!U_{84})*\!\cdot\!\neg a_{5} \\ k_2=E_{83}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{82}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{83}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1\}\\ k_1=D_{82}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{83}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6812,9 +6812,9 @@ Solution Stats: Size=1, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{82}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!U_{85})*\!\cdot\!\neg a_{5} \\ k_2=E_{83}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6848,14 +6848,14 @@ Solution Stats: Size=2, NAxioms=7
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{86}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!U_{88})*\!\cdot\!\neg a_{5} \\ k_2=E_{87}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6887,14 +6887,14 @@ Solution Stats: Size=2, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, U=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!U_{89})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, U=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{I=1, T=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6916,9 +6916,9 @@ Solution Stats: Size=1, NAxioms=3
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, U=1\}\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!U_{90})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{81}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, U=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6949,12 +6949,12 @@ Solution Stats: Size=2, NAxioms=9
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{95}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{96}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{95}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!U_{97})*\!\cdot\!\neg a_{5} \\ k_2=E_{96}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{95}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=E_{96}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1\}\\ k_1=D_{95}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{96}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -6974,7 +6974,7 @@ Solution Stats: Size=1, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 AComplete.
-TEX| .3 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{95}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!U_{98})*\!\cdot\!\neg a_{5} \\ k_2=E_{96}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -7003,12 +7003,12 @@ Solution Stats: Size=2, NAxioms=7
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{99}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!U_{101})*\!\cdot\!\neg a_{5} \\ k_2=E_{100}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, D=1, E=1, U=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -7035,12 +7035,12 @@ Solution Stats: Size=2, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, U=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!U_{102})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!C_{6})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, U=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{I=1, T=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -7058,7 +7058,7 @@ Solution Stats: Size=1, NAxioms=3
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 AComplete.
-TEX| .3 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, U=1\}\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{80}\!\cdot\!U_{103})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{94}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Axioms: \{I=1, T=1, U=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!T_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -7094,14 +7094,14 @@ Solution Stats: Size=2, NAxioms=9
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{106}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=E_{107}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{106}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{108}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=E_{107}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{106}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=E_{107}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1\}\\ k_1=D_{106}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{107}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -7125,9 +7125,9 @@ Solution Stats: Size=1, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{106}\!\cdot\!(a_{5} \!\cdot\!I_{109}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=E_{107}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -7161,14 +7161,14 @@ Solution Stats: Size=2, NAxioms=7
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{110}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{112}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=E_{111}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -7200,14 +7200,14 @@ Solution Stats: Size=2, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, I=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{113}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, I=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .6 AComplete.
-TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .7 $\left\{\begin{array}{l}Axioms: \{U=1, T=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -7229,9 +7229,9 @@ Solution Stats: Size=1, NAxioms=3
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $b_{12} $: \texttt{number &gt;= 0}.
-TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!C_{13})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~b_{12} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!C_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, I=1\}\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{114}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{105})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, I=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -7262,12 +7262,12 @@ Solution Stats: Size=2, NAxioms=9
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{119}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=E_{120}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{119}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{121}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=E_{120}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{119}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=E_{120}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1\}\\ k_1=D_{119}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{120}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -7287,7 +7287,7 @@ Solution Stats: Size=1, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 AComplete.
-TEX| .3 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{119}\!\cdot\!(a_{5} \!\cdot\!I_{122}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=E_{120}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -7316,12 +7316,12 @@ Solution Stats: Size=2, NAxioms=7
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{123}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{125}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=E_{124}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, D=1, E=1, I=1\}\\ k_1=D_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=E_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -7348,12 +7348,12 @@ Solution Stats: Size=2, NAxioms=5
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 (Complete), cond $a_{5} $: \texttt{count &lt;= 4}.
-TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, I=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{126}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!P_{7}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, I=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case ~\neg a_{5} :\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1\}\\ k_1=N_{8}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{U=1, T=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!(a_{5} \!\cdot\!0)*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 
@@ -7371,7 +7371,7 @@ Solution Stats: Size=1, NAxioms=3
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 AComplete.
-TEX| .3 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, I=1\}\\ k_1=N_{8}\!\cdot\!(a_{5} \!\cdot\!I_{127}\!\cdot\!U_{104})*\!\cdot\!\neg a_{5} \\ k_2=N_{15}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{14}\!\cdot\!T_{118})*\!\cdot\!\neg a_{11} \end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Axioms: \{U=1, T=1, I=1\}\\ k_1=N_{\texttt{count = nondet();}}\!\cdot\!(a_{5} \!\cdot\!I_{\texttt{() = printf(count);}}\!\cdot\!U_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{5} \\ k_2=N_{\texttt{count = nondet();}}\!\cdot\!1\!\cdot\!((a_{11}  \wedge b_{12} )\!\cdot\!P_{\texttt{() = printf(count);}}\!\cdot\!T_{\texttt{count = count +\_i,? 1;}})*\!\cdot\!\neg a_{11} \end{array}\right.$.
 TEX| }
 
 

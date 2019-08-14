@@ -5,7 +5,7 @@ sig
   type t
 
   val string_of: t -> string
-  val texstring_of: t -> string
+  val texstring_of: ?instr:(string option) -> t -> string
   val to_kat: t -> Kat.var
   val from_kat: Kat.var -> t
   val eq: t -> t -> bool
@@ -75,9 +75,7 @@ struct
     | Dot (l, r) -> (pr_expr_tex l axl) ^ "\\!\\cdot\\!" ^ (pr_expr_tex r axl)
     | Str e -> "(" ^ (pr_expr_tex e axl) ^ ")*"
     | Tst t -> pr_test_tex t
-    | Var v ->
-      (* let instr = Str.global_replace (Str.regexp_string "_") "" (axl v) in *)
-      V.texstring_of v
+    | Var v -> V.texstring_of ~instr:(Some (axl v)) v
 
   let rec map_test f_k (ke: test): test =
     match ke with
@@ -176,6 +174,11 @@ struct
     | _ -> t
 end
 
+let process_tex_string s =
+  s
+  |> Str.global_replace (Str.regexp_string "\\") ""
+  |> Str.global_replace (Str.regexp_string "_") "\\_"
+
 module type Label =
 sig
   type t
@@ -194,8 +197,15 @@ struct
   let string_of (l, v) =
     (pr_char v) ^ "_" ^ (L.string_of l)
 
-  let texstring_of (l, v) =
-    (pr_char v) ^ "_{" ^ (L.string_of l) ^ "}"
+  let texstring_of ?(instr=None) (l, v) =
+    let lbl =
+      match instr with
+      | None -> L.string_of l
+      | Some s ->
+        let ps = process_tex_string s in
+        "\\texttt{" ^ ps ^ "}"
+    in
+    (pr_char v) ^ "_{" ^ lbl ^ "}"
 
   let label_of (l, _) = l
 

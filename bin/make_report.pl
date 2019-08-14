@@ -7,19 +7,18 @@ my $MAXTREES = 2;
 
 sub postprocesstree {
     my ($tree) = @_;
-    $tree =~ s/write_headers\(\);/write_headers\(\);\\\\ /mg;
     $tree =~ s/([a-zA-Z])_([a-zA-Z])/$1\\_$2/mg;
-    $tree =~ s/([a-zA-Z])_([a-zA-Z])/$1\\_$2/mg;
-    $tree =~ s/send\(n\);/send(n);\\\\ /mg;
-    $tree =~ s/sendA\(n\);/sendA(n);\\\\ /mg;
-    $tree =~ s/(scanf\(\[^\)]+\);)/$1\\\\/mg;
-    $tree =~ s/(\(\) = D\(\);)/$1\\\\/mg;
-    $tree =~ s/shutdown\(\);/shutdown();\\\\ /mg;
-    $tree =~ s/getchar\(\);/getchar();\\\\ /mg;
-    $tree =~ s/err = copyout/\\\\err = copyout/mg;
-    $tree =~ s/pingall\(\);/pingall();\\\\ /mg;
-    $tree =~ s/(printf\([a-z0-9, ]+\);)/$1\\\\/mg;
     $tree =~ s/([a-zA-Z])_(\d+)/$1_{$2}/mg;
+    # $tree =~ s/write_headers\(\);/write_headers\(\);\\\\ /mg;
+    # $tree =~ s/send\(n\);/send(n);\\\\ /mg;
+    # $tree =~ s/sendA\(n\);/sendA(n);\\\\ /mg;
+    # $tree =~ s/(scanf\(\[^\)]+\);)/$1\\\\/mg;
+    # $tree =~ s/(\(\) = D\(\);)/$1\\\\/mg;
+    # $tree =~ s/shutdown\(\);/shutdown();\\\\ /mg;
+    # $tree =~ s/getchar\(\);/getchar();\\\\ /mg;
+    # $tree =~ s/err = copyout/\\\\err = copyout/mg;
+    # $tree =~ s/pingall\(\);/pingall();\\\\ /mg;
+    # $tree =~ s/(printf\([a-z0-9, ]+\);)/$1\\\\/mg;
     return $tree;
 }
 
@@ -94,7 +93,7 @@ foreach my $b (sort @bench) {
     print FULL "\\subsection{Synthesized solution for benchmark \\texttt{$b}}\n";
     print FULL "\\begin{scriptsize}\n";
     print ETEX "\\documentclass{article}\n";
-    print ETEX "\\usepackage[landscape]{geometry}\n";
+    print ETEX "\\usepackage[landscape,margin=1pt]{geometry}\n";
     print ETEX "\\usepackage{dirtree}\n";
     print ETEX "\\title{Synthesized solution for benchmark \\texttt{$b}}\n";
     print ETEX "\\date{\\vspace{-5ex}}\n";
