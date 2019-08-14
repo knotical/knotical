@@ -37,6 +37,7 @@ for ex in $EXAMPLES; do
     echo "ARGS: $ARGS";
     time ./knotical.native bench/$ex $ARGS 2>&1 >$RESULTSDIR/kn-$ex.txt
     cat $RESULTSDIR/kn-$ex.txt | $bindir/ansi2html.sh > $RESULTSDIR/kn-$ex.html
+    cat bench/$ex | $bindir/ansi2html.sh > $RESULTSDIR/src-$ex.html
     # (
     # 	echo -n "waiting for [$ex] "
     # 	((t = timeout))
