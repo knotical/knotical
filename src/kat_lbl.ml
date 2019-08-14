@@ -75,7 +75,7 @@ struct
     | Dot (l, r) -> (pr_expr_tex l axl) ^ "\\!\\cdot\\!" ^ (pr_expr_tex r axl)
     | Str e -> "(" ^ (pr_expr_tex e axl) ^ ")*"
     | Tst t -> pr_test_tex t
-    | Var v -> (*V.string_of v*) (axl v)
+    | Var v -> (* V.string_of v *) (Str.global_replace (Str.regexp_string "_") "\\_" (axl v))
 
   let rec map_test f_k (ke: test): test =
     match ke with

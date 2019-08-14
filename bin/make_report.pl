@@ -33,7 +33,7 @@ open NBENCH, ">$RESULTSDIR/NUMBENCH.tex" or die $!;
 print EM "*** RESULTS OF RUNNING ALL BENCHMARKS ***\n";
 print IDX "<html><head><style> table { width:100%; } table, th, td { border: 1px solid black; border-collapse: collapse; } th, td { padding: 15px; text-align: center; } tr:nth-child(even) { background-color: #eee; } tr:nth-child(odd) { background-color: #fff; } </style></head>";
 print IDX "<body><h2>Experimental Result</h2><table style=\"border: 1pt solid black;\">\n";
-print IDX "<tr><th rowspan=\"2\">Benchmark</th><th rowspan=\"2\">Raw Output</th><th rowspan=\"2\">loc</th><th rowspan=\"2\">fs</th><th rowspan=\"2\">Dir</th><th rowspan=\"2\">Time (s)</th><th rowspan=\"2\">Sols</th><th colspan=\"2\">Tuples</th><th colspan=\"2\">Hypos</th></tr>\n";
+print IDX "<tr><th rowspan=\"2\">Benchmark</th><th rowspan=\"2\">Raw Output</th><th rowspan=\"2\">Solutions</th><th rowspan=\"2\">loc</th><th rowspan=\"2\">fs</th><th rowspan=\"2\">Dir</th><th rowspan=\"2\">Time (s)</th><th rowspan=\"2\">Sols</th><th colspan=\"2\">Tuples</th><th colspan=\"2\">Hypos</th></tr>\n";
 print IDX "<tr><th>min</th><th>max</th><th>min</th><th>max</th></tr>\n";
 #print TEX "\\setlength\\tabcolsep{1.2pt}\n";
 print TEX "\\begin{tabular}{|r|l|r|r|c||r|r|c||r|r|r|r|}\n";
@@ -48,6 +48,7 @@ open VSLOC, ">$RESULTSDIR/VSLOC.csv" or die $!;
 foreach my $b (sort @bench) {
     next if $b eq "";
     ++$i;
+    open ETEX, ">$RESULTSDIR/res-$b.tex" or die $!;
     my $Tim = qx{grep " Time: " $RESULTSDIR/kn-$b.txt};
     chomp($Tim); $Tim =~ s/^.*ime: (.*) \(s\).*$/$1/;
     my $Rs = qx{grep " Result " $RESULTSDIR/kn-$b.txt | wc -l};
@@ -56,21 +57,21 @@ foreach my $b (sort @bench) {
     my %digest;
     $digest{$_} = 0 for qw/mintuples maxtuples avgtuples minaxioms maxaxioms avgaxioms bestsolax bestsoltu/;
     if (0+$Rs > 0) {
-	$digest{$_} = 99999 for qw/mintuples minaxioms/;
-	foreach my $statsline (split /\n/, $SolStats) {
-	    if ($statsline =~ /Size=(\d+), NAxioms=(\d+)$/) {
-		$digest{mintuples} = $1 if $1 < $digest{mintuples};
-		$digest{maxtuples} = $1 if $1 > $digest{maxtuples};
-		$digest{avgtuples} += $1;
-		$digest{minaxioms} = $2 if $2 < $digest{minaxioms};
-		$digest{maxaxioms} = $2 if $2 > $digest{maxaxioms};
-		$digest{avgaxioms} += $2;
-		$digest{bestsolax} = $2 if ($digest{minaxioms} == $2);
-		$digest{bestsoltu} = $1 if ($digest{minaxioms} == $2);
-	    } else { die $statsline; }
-	}
-	$digest{avgtuples} = $digest{avgtuples} / (0 +  $Rs);
-	$digest{avgaxioms} = $digest{avgaxioms} / (0 +  $Rs);
+      $digest{$_} = 99999 for qw/mintuples minaxioms/;
+      foreach my $statsline (split /\n/, $SolStats) {
+        if ($statsline =~ /Size=(\d+), NAxioms=(\d+)$/) {
+          $digest{mintuples} = $1 if $1 < $digest{mintuples};
+          $digest{maxtuples} = $1 if $1 > $digest{maxtuples};
+          $digest{avgtuples} += $1;
+          $digest{minaxioms} = $2 if $2 < $digest{minaxioms};
+          $digest{maxaxioms} = $2 if $2 > $digest{maxaxioms};
+          $digest{avgaxioms} += $2;
+          $digest{bestsolax} = $2 if ($digest{minaxioms} == $2);
+          $digest{bestsoltu} = $1 if ($digest{minaxioms} == $2);
+	      } else { die $statsline; }
+	    }
+      $digest{avgtuples} = $digest{avgtuples} / (0 +  $Rs);
+      $digest{avgaxioms} = $digest{avgaxioms} / (0 +  $Rs);
     }
     # Size=1, NAxioms=5
 
@@ -90,30 +91,48 @@ foreach my $b (sort @bench) {
     chomp($C1); chomp($C2);
     #print EM "$b : RESULT : $URLBASE/results-$STAMP/kn-$b.html\n";
     printf EM "  %-15s : %-4.3f : %4d : %-20s : (result here)\n", $b, $Tim, $Rs, $C2;
-    print FULL "\\subsection{Example synthesized solution for benchmark \\texttt{$b}}\n";
+    print FULL "\\subsection{Synthesized solution for benchmark \\texttt{$b}}\n";
     print FULL "\\begin{scriptsize}\n";
+    print ETEX "\\documentclass{article}\n";
+    print ETEX "\\usepackage[landscape]{geometry}\n";
+    print ETEX "\\usepackage{dirtree}\n";
+    print ETEX "\\title{Synthesized solution for benchmark \\texttt{$b}}\n";
+    print ETEX "\\date{\\vspace{-5ex}}\n";
+    print ETEX "\\begin{document}\n";
+    print ETEX "\\maketitle\n";
+    print ETEX "\\begin{scriptsize}\n";
     #my $src = qx{cat bench/$b};
     #print FULL "\\begin{small}\\begin{verbatim}\n$src\n\n\\end{verbatim}\\end{small}\n";
     my $trees = qx{grep TEX $RESULTSDIR/kn-$b.txt | cut -c 6-};
     my $saved = ''; my $ct=0;
     for my $treeline (split /\n/, $trees) {
-	++$ct if $treeline =~ /dirtree/;
-	$saved .= "$treeline\n" if ($ct < $MAXTREES);
+      ++$ct if $treeline =~ /dirtree/;
+      $saved .= "$treeline\n" if ($ct < $MAXTREES);
     }
     my $result = ($ct > 0 ? '\\EVsome' : '\\EVnone');
     if($result ne $expect) { $result = "\\red{$result}"; }
     printf TEX "%3d & %-15s & %4d & %4d & %6s & %4.2f &  %4d & %-5s / %-5s & %4d & %4d & %4d & %4d \\\\\n",
         $i, "\\texttt{$b}", $loc, $stats_kv{procs}, $cmplt, $Tim, $Rs, $expect, $result,
         map($digest{ $_}, qw/mintuples maxtuples minaxioms maxaxioms/);
-    print IDX "<tr style=\"border-top: 1pt solid black;\"><td><a href=\"src-$b.html\"><pre>$b</pre><td><a href=\"kn-$b.html\">$b</a></td><td>$loc</td><td>$stats_kv{procs}</td><td>$cmpltIDX</td><td>$Tim</td><td>$Rs</td><td>$digest{mintuples}</td><td>$digest{maxtuples}</td><td>$digest{minaxioms}</td><td>$digest{maxaxioms}</td></tr>\n";
+    print IDX "<tr style=\"border-top: 1pt solid black;\"><td><a href=\"src-$b.html\"><pre>$b</pre><td><a href=\"kn-$b.html\">$b</a></td><td><a href=\"res-$b.pdf\">$b</a></td><td>$loc</td><td>$stats_kv{procs}</td><td>$cmpltIDX</td><td>$Tim</td><td>$Rs</td><td>$digest{mintuples}</td><td>$digest{maxtuples}</td><td>$digest{minaxioms}</td><td>$digest{maxaxioms}</td></tr>\n";
 
     print VSLOC "$loc;$Tim;$Rs\n";
     #print FULL "\\paragraph{Solutions generated by {\\knotical}} \$\\;\$\n";
     #print FULL "\\[\\begin{array}{l}\n$trees\n\\end{array}\\]\n";
     print FULL postprocesstree($saved)."\n";
     print FULL "\\end{scriptsize}\n";
-    if ($ct == 0) { print FULL "\\medskip\n\\emph{No solutions.}\n"; }
-    if ($ct > $MAXTREES) { print FULL "\\medskip\n\\emph{Remaining ".($ct-$MAXTREES)." solutions ommitted for brevity.}\n"; }
+    print ETEX postprocesstree($saved)."\n";
+    print ETEX "\\end{scriptsize}\n";
+    if ($ct == 0) {
+        print FULL "\\medskip\n\\emph{No solutions.}\n";
+        print ETEX "\\medskip\n\\emph{No solutions.}\n";
+    }
+    if ($ct > $MAXTREES) {
+        print FULL "\\medskip\n\\emph{Remaining ".($ct-$MAXTREES)." solutions ommitted for brevity.}\n";
+        print ETEX "\\medskip\n\\emph{Remaining ".($ct-$MAXTREES)." solutions ommitted for brevity.}\n";
+    }
+    print ETEX "\\end{document}\n";
+    system "pdflatex -output-directory $RESULTSDIR $RESULTSDIR/res-$b.tex";
     #%foreach my $ln (split /\n/, $trees)
 }
 close VSLOC;
