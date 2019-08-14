@@ -203,14 +203,19 @@ let pr_result_tex r =
   let instr_map_of_var symtbl v =
     match KT.spl_instr_of_var ~symtbl:(Some symtbl) v with
     | None -> "mapfail(" ^ (IK.V.string_of v) ^ ")"
-    | Some (pts, instr) -> (SU.pr_instruction instr)
+    | Some (_, instr) -> (SU.pr_instruction instr)
+  in
+  let cons_map_of_key symtbl k =
+    match KT.spl_cons_of_key ~symtbl:(Some symtbl) k with
+    | None -> "mapfail(" ^ (IK.K.string_of k) ^ ")"
+    | Some (_, cons) -> SU.pr_cons cons
   in
   let pr_key = IK.K.texstring_of in
   let pr_indent_dir n = "."^(string_of_int n)^" " in
   let mk_label s symtbl k1 k2 =
     "$\\left\\{\\begin{array}{l}" ^ s ^ "\\\\ "
-    ^ "k_1=" ^ (K.pr_expr_tex k1 (instr_map_of_var symtbl)) ^ "\\\\ "
-    ^ "k_2=" ^ (K.pr_expr_tex k2 (instr_map_of_var symtbl)) ^ "\\end{array}\\right.$." in
+    ^ "k_1=" ^ (K.pr_expr_tex k1 (instr_map_of_var symtbl) (cons_map_of_key symtbl)) ^ "\\\\ "
+    ^ "k_2=" ^ (K.pr_expr_tex k2 (instr_map_of_var symtbl) (cons_map_of_key symtbl)) ^ "\\end{array}\\right.$." in
   let rec helper ntabs r =
     match r with
     | RLeaf rl ->

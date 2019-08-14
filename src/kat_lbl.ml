@@ -16,7 +16,7 @@ sig
   type t
 
   val string_of: t -> string
-  val texstring_of: t -> string
+  val texstring_of: ?cons:(string option) -> t -> string
   val to_kat: t -> Bdd.key
   val from_kat: Bdd.key -> t
   val eq: t -> t -> bool
@@ -52,14 +52,14 @@ struct
     | Bot -> "0"
     | Prd k -> K.string_of k
 
-  let rec pr_test_tex (t: test): string =
+  let rec pr_test_tex (t: test) (k2c: K.t -> string): string =
     match t with
-    | Dsj (l, r) -> "(" ^ (pr_test_tex l) ^ " \\vee " ^ (pr_test_tex r) ^ ")"
-    | Cnj (l, r) -> "(" ^ (pr_test_tex l) ^ " \\wedge " ^ (pr_test_tex r) ^ ")"
-    | Neg e -> "\\neg " ^ (pr_test_tex e)
+    | Dsj (l, r) -> "(" ^ (pr_test_tex l k2c) ^ " \\vee " ^ (pr_test_tex r k2c) ^ ")"
+    | Cnj (l, r) -> "(" ^ (pr_test_tex l k2c) ^ " \\wedge " ^ (pr_test_tex r k2c) ^ ")"
+    | Neg e -> "\\neg " ^ (pr_test_tex e k2c)
     | Top -> "1"
     | Bot -> "0"
-    | Prd k -> K.texstring_of k
+    | Prd k -> K.texstring_of ~cons:(Some (k2c k)) k
 
   let rec pr_expr (e: expr): string =
     match e with
@@ -69,13 +69,13 @@ struct
     | Tst t -> pr_test t
     | Var v -> V.string_of v
 
-  let rec pr_expr_tex (e: expr) (axl: V.t -> string): string =
+  let rec pr_expr_tex (e: expr) (v2i: V.t -> string) (k2c: K.t -> string): string =
     match e with
-    | Pls (l, r) -> "(" ^ (pr_expr_tex l axl) ^ " + " ^ (pr_expr_tex r axl) ^ ")"
-    | Dot (l, r) -> (pr_expr_tex l axl) ^ "\\!\\cdot\\!" ^ (pr_expr_tex r axl)
-    | Str e -> "(" ^ (pr_expr_tex e axl) ^ ")*"
-    | Tst t -> pr_test_tex t
-    | Var v -> V.texstring_of ~instr:(Some (axl v)) v
+    | Pls (l, r) -> "(" ^ (pr_expr_tex l v2i k2c) ^ " + " ^ (pr_expr_tex r v2i k2c) ^ ")"
+    | Dot (l, r) -> (pr_expr_tex l v2i k2c) ^ "\\!\\cdot\\!" ^ (pr_expr_tex r v2i k2c)
+    | Str e -> "(" ^ (pr_expr_tex e v2i k2c) ^ ")*"
+    | Tst t -> pr_test_tex t k2c
+    | Var v -> V.texstring_of ~instr:(Some (v2i v)) v
 
   let rec map_test f_k (ke: test): test =
     match ke with
@@ -178,6 +178,7 @@ let process_tex_string s =
   s
   |> Str.global_replace (Str.regexp_string "\\") ""
   |> Str.global_replace (Str.regexp_string "_") "\\_"
+  |> Str.global_replace (Str.regexp_string "%") "\\%"
 
 module type Label =
 sig
@@ -232,8 +233,15 @@ struct
   let string_of (l, k) =
     (pr_char k) ^ "_" ^ (L.string_of l)
 
-  let texstring_of (l, k) = 
-    (pr_char k) ^ "_{" ^ (L.string_of l) ^ "} "
+  let texstring_of ?(cons=None) (l, k) =
+    let lbl =
+      match cons with
+      | None -> L.string_of l
+      | Some s ->
+        let ps = process_tex_string s in
+        "\\texttt{" ^ ps ^ "}"
+    in
+    (pr_char k) ^ "_{" ^ lbl ^ "} "
 
   let label_of (l, _) = l
 
