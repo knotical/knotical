@@ -31,7 +31,7 @@ open NBENCH, ">$RESULTSDIR/NUMBENCH.tex" or die $!;
 #print FULL "\\begin{landscape}\n";
 print EM "*** RESULTS OF RUNNING ALL BENCHMARKS ***\n";
 print IDX "<html><head><style> table { width:100%; } table, th, td { border: 1px solid black; border-collapse: collapse; } th, td { padding: 15px; text-align: center; } tr:nth-child(even) { background-color: #eee; } tr:nth-child(odd) { background-color: #fff; } </style></head>";
-print IDX "<body><h2>Experimental Result</h2><table style=\"border: 1pt solid black;\">\n";
+print IDX "<body><h2>Experimental Result of Knotical</h2><table style=\"border: 1pt solid black;\">\n";
 print IDX "<tr><th rowspan=\"2\">Benchmark</th><th rowspan=\"2\">Raw Output</th><th rowspan=\"2\">Solutions</th><th rowspan=\"2\">loc</th><th rowspan=\"2\">fs</th><th rowspan=\"2\">Dir</th><th rowspan=\"2\">Time (s)</th><th rowspan=\"2\">Sols</th><th colspan=\"2\">Tuples</th><th colspan=\"2\">Hypos</th></tr>\n";
 print IDX "<tr><th>min</th><th>max</th><th>min</th><th>max</th></tr>\n";
 #print TEX "\\setlength\\tabcolsep{1.2pt}\n";
