@@ -144,3 +144,5 @@ NOTE: The following instructions have been tested on **Ubuntu 18.04 LTS** with *
     ```
     lynx results-YYYYMMDD-hhmmss/SUMMARY.html
     ```
+    
+    For example, [SUMMARY.html](results/SUMMARY.html) is the experimental result running on a MacBook Pro with a 3.5 GHz Intel Core i7 CPU and 16GB RAM.
