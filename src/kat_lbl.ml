@@ -75,7 +75,9 @@ struct
     | Dot (l, r) -> (pr_expr_tex l axl) ^ "\\!\\cdot\\!" ^ (pr_expr_tex r axl)
     | Str e -> "(" ^ (pr_expr_tex e axl) ^ ")*"
     | Tst t -> pr_test_tex t
-    | Var v -> (* V.string_of v *) (Str.global_replace (Str.regexp_string "_") "\\_" (axl v))
+    | Var v ->
+      (* let instr = Str.global_replace (Str.regexp_string "_") "" (axl v) in *)
+      V.texstring_of v
 
   let rec map_test f_k (ke: test): test =
     match ke with
@@ -193,7 +195,7 @@ struct
     (pr_char v) ^ "_" ^ (L.string_of l)
 
   let texstring_of (l, v) =
-    (pr_char v) ^ "_{" ^ (L.string_of l) ^ "} "
+    (pr_char v) ^ "_{" ^ (L.string_of l) ^ "}"
 
   let label_of (l, _) = l
 

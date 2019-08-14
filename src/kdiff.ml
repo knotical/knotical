@@ -229,18 +229,18 @@ let pr_result_tex r =
       let cons_str =
         match KT.spl_cons_of_key ~symtbl:(Some rt.rt_symtab) k with
         | None -> ""
-        | Some (_, cons) -> ", cond: $"^(SU.pr_cons cons)^"$" in
+        | Some (_, cons) -> ", cond $" ^ (pr_key k) ^ "$: \\texttt{"^(SU.pr_cons cons)^"}" in
       [((pr_indent_dir ntabs) ^ "(" ^
         (if rt.rt_is_complete then "Complete" else "Partial") ^ ")" ^ cons_str^".")]
       @ (match pr with
           | None -> []
           | Some r ->
-            [((pr_indent_dir (ntabs+1)) ^ (mk_label ("Cond: "^(pr_key k)) rt.rt_symtab kat1 kat2))]
+            [((pr_indent_dir (ntabs+1)) ^ (mk_label ("Case ~"^(pr_key k)^":") rt.rt_symtab kat1 kat2))]
             @ (helper (ntabs+2) r))
       @ (match nr with
           | None -> []
           | Some r ->
-            [((pr_indent_dir (ntabs+1)) ^ (mk_label ("Cond: \\neg "^(pr_key k)) rt.rt_symtab kat1 kat2))]
+            [((pr_indent_dir (ntabs+1)) ^ (mk_label ("Case ~\\neg "^(pr_key k)^":") rt.rt_symtab kat1 kat2))]
             @ (helper (ntabs+2) r))
   in
   ["\\dirtree{%";".1 solution."]

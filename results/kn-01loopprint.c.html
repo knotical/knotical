@@ -1402,13 +1402,13 @@ Solution Stats: Size=2, NAxioms=4
 !!! ============================
 TEX| \dirtree{%
 TEX| .1 solution.
-TEX| .2 (Complete), cond: $a &gt; 5$.
-TEX| .3 $\left\{\begin{array}{l}Cond: c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .2 (Complete), cond $c_{17} $: \texttt{a &gt; 5}.
+TEX| .3 $\left\{\begin{array}{l}Case c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1);)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Cond: \neg c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!E_{24}\!\cdot\!G_{25})*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case \neg c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| }
 
 
@@ -1433,13 +1433,13 @@ Solution Stats: Size=2, NAxioms=4
 !!! ============================
 TEX| \dirtree{%
 TEX| .1 solution.
-TEX| .2 (Complete), cond: $a &gt; 5$.
-TEX| .3 $\left\{\begin{array}{l}Cond: c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .2 (Complete), cond $c_{17} $: \texttt{a &gt; 5}.
+TEX| .3 $\left\{\begin{array}{l}Case c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1);)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Cond: \neg c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!G_{27}\!\cdot\!E_{26})*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case \neg c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| }
 
 
@@ -1465,13 +1465,13 @@ Solution Stats: Size=2, NAxioms=5
 !!! ============================
 TEX| \dirtree{%
 TEX| .1 solution.
-TEX| .2 (Complete), cond: $a &gt; 5$.
-TEX| .3 $\left\{\begin{array}{l}Cond: c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .2 (Complete), cond $c_{17} $: \texttt{a &gt; 5}.
+TEX| .3 $\left\{\begin{array}{l}Case c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!E_{28}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1);)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Cond: \neg c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!E_{28}\!\cdot\!G_{29})*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case \neg c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!E_{28}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| }
 
 
@@ -1489,7 +1489,7 @@ Solution Stats: Size=1, NAxioms=3
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 AComplete.
-TEX| .3 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!E_{28}\!\cdot\!G_{30} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| }
 
 
@@ -1515,13 +1515,13 @@ Solution Stats: Size=2, NAxioms=5
 !!! ============================
 TEX| \dirtree{%
 TEX| .1 solution.
-TEX| .2 (Complete), cond: $a &gt; 5$.
-TEX| .3 $\left\{\begin{array}{l}Cond: c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .2 (Complete), cond $c_{17} $: \texttt{a &gt; 5}.
+TEX| .3 $\left\{\begin{array}{l}Case c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!E_{31} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1);)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Cond: \neg c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!G_{32}\!\cdot\!E_{31})*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case \neg c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!E_{31} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| }
 
 
@@ -1539,7 +1539,7 @@ Solution Stats: Size=1, NAxioms=3
 TEX| \dirtree{%
 TEX| .1 solution.
 TEX| .2 AComplete.
-TEX| .3 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{23}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!G_{33}\!\cdot\!E_{31} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| }
 
 
@@ -1564,13 +1564,13 @@ Solution Stats: Size=2, NAxioms=4
 !!! ============================
 TEX| \dirtree{%
 TEX| .1 solution.
-TEX| .2 (Complete), cond: $a &gt; 5$.
-TEX| .3 $\left\{\begin{array}{l}Cond: c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .2 (Complete), cond $c_{17} $: \texttt{a &gt; 5}.
+TEX| .3 $\left\{\begin{array}{l}Case c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!A_{21}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1);)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Cond: \neg c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{34}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!E_{35}\!\cdot\!G_{36})*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case \neg c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!A_{21}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{49}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| }
 
 
@@ -1595,13 +1595,13 @@ Solution Stats: Size=2, NAxioms=4
 !!! ============================
 TEX| \dirtree{%
 TEX| .1 solution.
-TEX| .2 (Complete), cond: $a &gt; 5$.
-TEX| .3 $\left\{\begin{array}{l}Cond: c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .2 (Complete), cond $c_{17} $: \texttt{a &gt; 5}.
+TEX| .3 $\left\{\begin{array}{l}Case c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!A_{21}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1);)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Cond: \neg c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{34}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!G_{38}\!\cdot\!E_{37})*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case \neg c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!A_{21}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{49}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| }
 
 
@@ -1626,13 +1626,13 @@ Solution Stats: Size=2, NAxioms=4
 !!! ============================
 TEX| \dirtree{%
 TEX| .1 solution.
-TEX| .2 (Complete), cond: $a &gt; 5$.
-TEX| .3 $\left\{\begin{array}{l}Cond: c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .2 (Complete), cond $c_{17} $: \texttt{a &gt; 5}.
+TEX| .3 $\left\{\begin{array}{l}Case c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!A_{21}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1);)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Cond: \neg c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!E_{40}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!D_{39}\!\cdot\!G_{41})*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case \neg c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!A_{21}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{49}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| }
 
 
@@ -1657,13 +1657,13 @@ Solution Stats: Size=2, NAxioms=4
 !!! ============================
 TEX| \dirtree{%
 TEX| .1 solution.
-TEX| .2 (Complete), cond: $a &gt; 5$.
-TEX| .3 $\left\{\begin{array}{l}Cond: c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .2 (Complete), cond $c_{17} $: \texttt{a &gt; 5}.
+TEX| .3 $\left\{\begin{array}{l}Case c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!A_{21}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1);)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Cond: \neg c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!G_{43}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!D_{39}\!\cdot\!E_{42})*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case \neg c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!A_{21}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{49}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| }
 
 
@@ -1688,13 +1688,13 @@ Solution Stats: Size=2, NAxioms=4
 !!! ============================
 TEX| \dirtree{%
 TEX| .1 solution.
-TEX| .2 (Complete), cond: $a &gt; 5$.
-TEX| .3 $\left\{\begin{array}{l}Cond: c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .2 (Complete), cond $c_{17} $: \texttt{a &gt; 5}.
+TEX| .3 $\left\{\begin{array}{l}Case c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!A_{21}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1);)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Cond: \neg c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!E_{45}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!G_{46}\!\cdot\!D_{44})*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case \neg c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!A_{21}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{49}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| }
 
 
@@ -1719,17 +1719,17 @@ Solution Stats: Size=2, NAxioms=4
 !!! ============================
 TEX| \dirtree{%
 TEX| .1 solution.
-TEX| .2 (Complete), cond: $a &gt; 5$.
-TEX| .3 $\left\{\begin{array}{l}Cond: c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .2 (Complete), cond $c_{17} $: \texttt{a &gt; 5}.
+TEX| .3 $\left\{\begin{array}{l}Case c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!A_{21}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1);)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
-TEX| .3 $\left\{\begin{array}{l}Cond: \neg c_{17} \\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!(c_{17} \!\cdot\!fv\_1 = 0;\!\cdot\!() = printf(a, fv\_1); + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1, E=1, G=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!G_{48}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!E_{47}\!\cdot\!D_{44})*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .3 $\left\{\begin{array}{l}Case \neg c_{17} :\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!A_{21}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!(c_{17} \!\cdot\!V_{16}\!\cdot\!T_{15} + \neg c_{17} \!\cdot\!1))*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| .4 AComplete.
-TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;)*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!a = i +\_i,? j;\!\cdot\!() = printf(i, j);\!\cdot\!i = i +\_i,? 1;\!\cdot\!j = j +\_i,? 1;\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
+TEX| .5 $\left\{\begin{array}{l}Axioms: \{D=1\}\\ k_1=((a_{5}  \vee b_{6} )\!\cdot\!P_{9}\!\cdot\!I_{8}\!\cdot\!J_{7})*\!\cdot\!(\neg a_{5}  \wedge \neg b_{6} )\\ k_2=((a_{13}  \vee b_{14} )\!\cdot\!D_{49}\!\cdot\!P_{20}\!\cdot\!I_{19}\!\cdot\!J_{18}\!\cdot\!1\!\cdot\!1)*\!\cdot\!(\neg a_{13}  \wedge \neg b_{14} )\end{array}\right.$.
 TEX| }
 
 
- ==&gt; Time: 0.53 (s)
+ ==&gt; Time: 0.28 (s)
 
 </pre>
 </body>
