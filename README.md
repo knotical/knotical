@@ -1,3 +1,5 @@
+[[https://github.com/knotical/knotical/blob/master/logo.png|alt=logo]]
+
 # Knotical: An Inference System of Trace Refinement Relations
 
 ## Getting Started Guide
