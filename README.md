@@ -1,4 +1,4 @@
-[[https://github.com/knotical/knotical/blob/master/logo.png|alt=logo]]
+![Logo](logo.png?raw=true "Logo")
 
 # Knotical: An Inference System of Trace Refinement Relations
 
