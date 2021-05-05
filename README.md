@@ -148,3 +148,7 @@ NOTE: The following instructions have been tested on **Ubuntu 18.04 LTS** with *
     ```
     
     For example, [SUMMARY.html](results/SUMMARY.html) is the experimental result running on a MacBook Pro with a 3.5 GHz Intel Core i7 CPU and 16GB RAM.
+
+# Support
+
+This work is supported by Office of Naval Research under Grant No.: N00014-17-1-2787.
