@@ -1,4 +1,4 @@
-FROM avta/knotical-core:latest
+FROM avta/knotical-core:opam_2_0
 
 COPY . /knotical
 
